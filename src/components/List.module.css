@@ -1,0 +1,15 @@
+.list{
+    width: 100%;
+    list-style-type: none;
+    /*margin: 0;*/
+    /*margin: 0; padding: 0;*/
+
+}
+
+    .option{
+        position: relative;
+        margin: 0;
+        padding: 0;
+        /*list-style-type: none;*/
+        /*border-bottom: 1px solid #d7d7d7;*/
+    }

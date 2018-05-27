@@ -1,0 +1,56 @@
+.header{
+    background: var(--mediumpurple);
+    width: 100%;
+    height: 55px;
+    /*color: var(--faintpurple);*/
+    color: white;
+    box-sizing: border-box;
+    letter-spacing: 0.03rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    white-space: nowrap;
+    transform: translateX(0px);
+}
+.header.offsetForBackBtn{
+    transform: translateX(15px);
+}
+
+.backButton{
+    position: absolute;
+    /*left: 15px;*/
+    left: 0;
+    opacity: 0;
+    transform: translateX(-30px);
+    transition:  opacity .2s;
+}
+.backButton.visible{
+    opacity: 1;
+
+}
+.titleWrapper{
+    position: absolute;
+    left: 15px;
+    height: 100%;
+    display: flex; align-items: center;
+    transition: transform .2s;
+}
+.titleWrapper.offset{
+    transform: translateX(30px);
+}
+.title{
+    position: absolute;
+    opacity: 0;
+    transition: opacity .2s, transform .2s;
+}
+.title.visible{
+    opacity: 1;
+    /*transform: translateX(0);*/
+}
+.title.inFuture{
+    /*transform: translateX(75px);*/
+}
+.title.inPast{
+    /*transform: translateY(-75px;);*/
+}
+

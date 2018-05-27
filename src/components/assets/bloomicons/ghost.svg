@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 21.0.2, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+     viewBox="0 0 61.1 82.4" style="enable-background:new 0 0 61.1 82.4;" xml:space="preserve">
+<style type="text/css">
+    .ghost-st0{fill:#FFFFFF;stroke:#8397A7;stroke-width:4;}
+    .ghost-st1{fill:none;stroke:#8397A7;stroke-width:3.5;stroke-linecap:round;stroke-miterlimit:10;}
+    .ghost-st2{fill:none;stroke:#8397A7;stroke-width:3;stroke-linecap:round;stroke-miterlimit:10;}
+</style>
+<path class="ghost-st0" d="M30.6,3.8C15.6,3.8,3.4,15.5,3.4,30v43.6c0,2.9,2.3,5.2,5.2,5.2l0,0c2.9,0,5.2-2.3,5.2-5.2v-1.2
+    c0-2.9,2.3-5.2,5.2-5.2h1c2.9,0,5.2,2.3,5.2,5.2v1.2c0,2.9,2.3,5.2,5.2,5.2h0.2h0.2c2.9,0,5.2-2.3,5.2-5.2v-1.2
+    c0-2.9,2.3-5.2,5.2-5.2h1.1c2.9,0,5.2,2.3,5.2,5.2v1.2c0,2.9,2.3,5.2,5.2,5.2l0,0c2.9,0,5.2-2.3,5.2-5.2V29.9
+    C57.8,15.5,45.6,3.8,30.6,3.8z"/>
+<g>
+    <path class="ghost-st1" d="M26.5,30c-1.1-1.8-3-3-5.2-3s-4.2,1.2-5.2,3"/>
+    <path class="ghost-st1" d="M45.1,30c-1.1-1.8-3-3-5.2-3s-4.2,1.2-5.2,3"/>
+</g>
+<path class="ghost-st2" d="M25.9,38.4c0.9,1.6,2.7,2.7,4.7,2.7s3.7-1.1,4.7-2.7"/>
+</svg>

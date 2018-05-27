@@ -1,0 +1,135 @@
+.findIntegration{
+    display: flex;
+    flex-direction: column;
+    /*padding: 25px;*/
+    background: #f3f3f5;
+    height: 100vh;
+}
+
+.filters{
+    padding: 15px 25px;
+    margin-top: 5px;
+    transition: opacity .2s, transform .2s;
+}
+.filters.hidden{
+    opacity: 0;
+    transform: translateY(-25px);
+}
+
+.entry{
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    /*width: 125vw;*/
+    color: var(--mediumpurple);
+}
+.entry.hospital, .entry.doctor{
+    padding: 15px 25px;
+}
+.entry.selected{
+    background: var(--offwhite);
+}
+
+.entry .title{
+    color: var(--textpurple);
+    white-space: nowrap;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.entry .subtitle{
+    width: 100%;
+    padding-top: 2px;
+    color: var(--mediumpurple);
+}
+
+.options{
+    box-sizing: border-box;
+    border-bottom: 1px solid #c4c4c4;
+}
+/*.options:first-of-type{
+    border-top: 1px solid #c4c4c4;
+}*/
+
+.entry .icon{
+    margin-right: 15px;
+}
+
+.entry .loginMask{
+    position: absolute;
+    /*bottom: 0;*/
+    top: 100%;
+    height: 100vh;
+    left: 0;
+    width: 100%;
+    background: var(--offwhite);
+    transform-origin: 50% 0%;
+    opacity: 0;
+    animation: expandingMask .4s .3s forwards;
+}
+
+.listWrapper{
+
+}
+
+.list{
+    border-top: 1px solid #c4c4c4;
+    padding: 0;
+    margin-top: 5px;
+    transition: transform .4s;
+}
+.list.shiftedUp, .loginContainer{
+    transform: translateY(-92px);
+}
+
+.integrationLogin{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+    .integrationLogin input{
+        /*width: 100%;*/
+        font-size: 16px;
+        width: 80%;
+        box-sizing: border-box;
+        padding: 15px 20px;
+    }
+    .integrationLogin input.userName{
+        appearance: none;
+        outline: none;
+        border: 1px solid #c4c4c4;
+        border-bottom-color: transparent;
+        border-radius: 8px 8px 0 0;
+    }
+    .integrationLogin input.password{
+        border-radius: 0 0 8px 8px;
+        border: 1px solid #c4c4c4;
+    }
+    .integrationLogin .signInButton{
+        margin-top: 20px;
+
+    }
+    .integrationLogin .forgotPass{
+        margin-top: 30px;
+        width: 100%;
+        text-align: center;
+        color: var(--actionpurple);
+        
+    }
+
+
+@keyframes expandingMask{
+    from{
+        opacity: 0;
+        transform: scaleY(0);
+    }
+    to{
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}

@@ -1,27 +1,10 @@
 import React from 'react';
 
-import {observable, action} from 'mobx'
-import {observer} from 'mobx-react'
-
-import { storiesOf, addDecorator } from '@storybook/react';
-import {withKnobs, select} from '@storybook/addon-knobs'
-// import { action } from '@storybook/addon-actions';
+import { storiesOf } from '@storybook/react';
+import { action } from '@storybook/addon-actions';
 import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
-
-import styles from './stories.module.css'
-
-addDecorator(withKnobs)
-
-class MobXTest extends React.Component{
-    @observable testdata = 'poo'
-    render(){
-        console.log(this.testdata)
-        return <div className = {styles.testModule}> {this.testdata} {this.props.knob} </div>
-    }
-}
-
 
 storiesOf('Welcome', module).add('to Storybook', () => <Welcome showApp={linkTo('Button')} />);
 
@@ -34,10 +17,3 @@ storiesOf('Button', module)
       </span>
     </Button>
   ));
-
-storiesOf('mobxtest', module)
-    .add('1', ()=>{
-        const knob = select('test knob', ['yo', 'hi', 'helloworld', 'gbye'])
-        return <MobXTest knob = {knob}/>
-    })
-
