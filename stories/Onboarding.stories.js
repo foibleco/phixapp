@@ -7,7 +7,7 @@ import '../src/App.css'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 
-// addDecorator(withViewport('iphone6'))
+addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
 // console.log(configureViewport)
 

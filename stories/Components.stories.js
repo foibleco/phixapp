@@ -11,11 +11,8 @@ import {Icon} from '../src/components/Icon'
 import {List} from '../src/components/Icon'
 import MockOutsideApp from '../src/components/MockOutsideApp'
 
-// addDecorator(withViewport('iphone6'))
+addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
-console.log(configureViewport)
-console.log(withViewport)
-
 
 storiesOf('Components', module).add('Header', ()=>{
     return <div />

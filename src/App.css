@@ -1,17 +1,35 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
+
+html{
+    touch-action: manipulation;
+    overflow-x: hidden;
+    position: relative;
+
+    user-select: none;
+        /*this should disable accidental text selection in mobile browsers etc.*/
+}
+body{
+    margin: 0;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
+*{
+        /*position: relative;*/
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: 'Work Sans', sans-serif;
+    letter-spacing: 0.25px;
 }
 
-.App-intro {
-  font-size: large;
-}
+:root{
+    --void: #f3f3f5;
+    --offwhite: #fbfbfc;
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+    --faintpurple: #f5f6ff;
+    --lightpurple: #E6E6F2;
+    --actionpurple: #809cff;
+    --mediumpurple: #8791C7;
+    --textpurple: #352852;
+    --strokepurple: #8791C7;
+    --basicshadow: 0 1px 3px 0 rgba(0,0,0,0.25);
+
 }
