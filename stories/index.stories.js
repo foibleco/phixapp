@@ -10,13 +10,15 @@ import { linkTo } from '@storybook/addon-links';
 
 import { Button, Welcome } from '@storybook/react/demo';
 
+import styles from './stories.module.css'
+
 addDecorator(withKnobs)
 
 class MobXTest extends React.Component{
     @observable testdata = 'poo'
     render(){
         console.log(this.testdata)
-        return <div> {this.testdata} {this.props.knob} </div>
+        return <div className = {styles.testModule}> {this.testdata} {this.props.knob} </div>
     }
 }
 
