@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Icon.module.css'
 
-const iconlist = {
+export const iconlist = {
     //back: require('./assets/back.svg'),
     stethoscope: require('./assets/stethoscope.svg'),
     healthinsurance: require('./assets/healthinsurance.svg'),

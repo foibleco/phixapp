@@ -1,0 +1,4 @@
+.iconGrid{
+    display: flex;
+    flex-wrap: wrap;
+}
