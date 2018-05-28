@@ -1,4 +1,5 @@
 .header{
+    position: relative;
     background: var(--mediumpurple);
     width: 100%;
     height: 55px;
@@ -14,6 +15,9 @@
     transform: translateX(0px);
 }
 .title{
+    display: flex;
+    align-items: center;
+    height: 100%;
     transition: transform .2s;
 }
 .titleWrapper{ 
@@ -48,6 +52,12 @@
     pointer-events: none;
     transition: transform .2s, opacity .2s;
     z-index: 4;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .backButton.visible{
     transform: translateX(0);
@@ -56,9 +66,45 @@
 }
 
 .right{
+    /*position: absolute;*/
+    /*right: 0;*/
+    width: 50px;
+    /*border: 1px solid white;*/
+    height: 100%;
     display: flex;
+    justify-content: flex-end;
     align-items: center;
 }
+
+
+
+.searchInput{
+    padding-left: 38px;
+    appearance: none;
+    outline: none;
+    border: none;
+    height: 2.25rem;
+    width: 100%;
+    /*left: 45px;*/
+    border-radius: 3px;
+    /*position: absolute;*/
+    /*pointer-events: none;*/
+}
+.searchInput::placeholder{
+    color: #d7d7d7;
+}
 .dotboiga{
-    margin-left: 5px;
+    margin-left: 10px;
+}
+
+
+
+.inputSearchIcon{
+    position: absolute;
+    left: 10px;
+}
+.cancelSearch{
+    position: absolute;
+    right: 10px;
+    opacity: 0.5;
 }
