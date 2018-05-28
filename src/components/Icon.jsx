@@ -17,6 +17,11 @@ export const iconlist = {
     search: require('./assets/searchzoom.svg'),
     dotburger: require('./assets/dotboiga.svg'),
 
+    aetna: require('./assets/companies/aetna.svg'),
+    bluecross: require('./assets/companies/bluecross.svg'),
+    blueshield: require('./assets/companies/blueshield.svg'),
+    cigna: require('./assets/companies/cigna.svg'),
+    unitedhealthcare: require('./assets/companies/unitedhealthcare.svg'),
     stanford: require('./assets/companies/stanford.svg'),
     kaiser: require('./assets/companies/kaiser.svg'),
     dignityhealth: require('./assets/companies/dignityhealth.svg'),

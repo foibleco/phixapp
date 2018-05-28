@@ -81,7 +81,7 @@ export default class FindIntegration extends React.Component{
                     ].join(' ')}
                     onClick = {()=>{this.select(entry.name)}}
                 >
-                    {entry.type === 'network' &&
+                    {(entry.type === 'network' || entry.type === 'insurer') &&
                         <React.Fragment> 
                             <Icon img = {entry.logo} size = "large" className = {styles.icon} />
                             {entry.name}
@@ -121,7 +121,7 @@ export default class FindIntegration extends React.Component{
         return (
             <div className = {styles.findIntegration}>
 
-                    <div className = {[styles.filters, this.selected? styles.hidden : ''].join(' ')}>
+                    <div className = {[styles.filters, this.selected || this.props.integration!=='Care Provider'? styles.hidden : ''].join(' ')}>
                         <ButtonGroup
                             toggle
                             options = {[
@@ -133,7 +133,7 @@ export default class FindIntegration extends React.Component{
                         />
                     </div>
                    <List
-                        className = {[styles.list, this.selected? styles.shiftedUp : ''].join(' ')}
+                        className = {[styles.list, this.selected || this.props.integration!=='Care Provider'? styles.shiftedUp : ''].join(' ')}
                         animate
                         animateDuration = {350}
                         animateStagger = {15}

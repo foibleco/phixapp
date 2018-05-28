@@ -31,9 +31,12 @@ const careProviders = [
 ].concat(doctors)
 
 const insurers = [
-    {name: 'Anthem BlueCross BlueShield'},
-    {name: 'Kaiser Permanente', },
-    {name: 'something else'}
+    {name: 'Aetna', type: 'insurer', logo: 'aetna'},
+    {name: 'Anthem BlueCross', type: 'insurer', logo: 'bluecross'},
+    {name: 'Anthem BlueShield', type: 'insurer', logo: 'blueshield' },
+    {name: 'Cigna', type: 'insurer', logo: 'cigna'},
+    {name: 'Kaiser Permanente', type: 'insurer', logo: 'kaiser' },
+    {name: 'UnitedHealthcare', type: 'insurer', logo: 'unitedhealthcare'},
 ]
 
 export {careProviders, insurers}
