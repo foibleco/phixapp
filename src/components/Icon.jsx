@@ -10,11 +10,13 @@ export const iconlist = {
     hsapig: require('./assets/hsapig.svg'),
     wearable: require('./assets/wearable.svg'),
 
+    person: require('./assets/person.svg'),
     x: require('./assets/x.svg'),
     locationpin: require('./assets/locationpin.svg'),
     check: require('./assets/check.svg'),
     chevleft: require('./assets/chevleft.svg'),
     search: require('./assets/searchzoom.svg'),
+    lock: require('./assets/lock.svg'),
     dotburger: require('./assets/dotboiga.svg'),
 
     aetna: require('./assets/companies/aetna.svg'),

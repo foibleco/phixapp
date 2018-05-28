@@ -7,6 +7,7 @@ import '../src/App.css'
 import Onboarding from '../src/workflows/onboarding/Onboarding'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
+import OpenIntegrationDialog from '../src/workflows/onboarding/OpenIntegrationDialog'
 
 addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
@@ -31,4 +32,7 @@ storiesOf('Onboarding', module)
             integration = "Care Provider"
         />
 
+    })
+    .add('OpenIntegrationDialog', ()=>{
+        return <OpenIntegrationDialog app = 'MyChart' />
     })

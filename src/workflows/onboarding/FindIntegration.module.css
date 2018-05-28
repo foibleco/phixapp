@@ -85,19 +85,38 @@
 .list.shiftedUp, .loginContainer{
     transform: translateY(-92px);
 }
-
+.loginInputWrapper{
+    position: relative;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+}
 .integrationLogin{
     width: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
+
+    .userNameIcon{
+        position: absolute;
+        top: 0; bottom: 0; margin: auto 0;
+        left: 15px;
+    }
+    .passwordIcon{
+        position: absolute;
+        top: 0; bottom: 3px; margin: auto 0;
+        left: 15px;
+    }
     .integrationLogin input{
         /*width: 100%;*/
         font-size: 16px;
-        width: 80%;
+        width: 100%;
         box-sizing: border-box;
-        padding: 15px 20px;
+        padding: 15px 20px 15px 45px;
+    }
+    .integrationLogin input:focus{
+        appearance: none;
     }
     .integrationLogin input.userName{
         appearance: none;

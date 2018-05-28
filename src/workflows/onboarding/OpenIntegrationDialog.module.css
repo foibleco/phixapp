@@ -1,0 +1,18 @@
+.openIntegrationDialog{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.image{
+    width: 100%;
+    border: 1px solid var(--mediumpurple);
+}
+.context{
+    padding: 25px;
+    margin-top: 20px;
+    color: var(--mediumpurple);
+    line-height: 1.5rem;
+    margin-bottom: 15px;
+}

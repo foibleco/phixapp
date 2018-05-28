@@ -22,14 +22,12 @@ const mockEntryLists = {
 
 @observer
 export default class FindIntegration extends React.Component{
-    @observable accountTypeIndex = 0 //which # acct are we on in the accts user chose to sync? 
-       @observable selected = null //the name of item user selects from list
+      @observable selected = null //the name of item user selects from list
        @action unselect = () => this.selected = null //for back operations?
     @observable filteringBy = 'network' //only applicable to care provider i think
     //list animation stuff
     @observable readyToAnimate = true
     @observable animateDirection = 1
-    @observable appOverlay = false
 
     @action select = (item) =>{ 
         this.selected = item
@@ -49,7 +47,6 @@ export default class FindIntegration extends React.Component{
         this.filteringBy = type
     }
     @action setAnimateReady = (ready) => this.readyToAnimate = ready
-    @action toggleFakeApp = () => { this.appOverlay = !this.appOverlay }
 
     componentDidUpdate(prevProps){
         if(prevProps.mode==='login' && this.props.mode==='find') this.unselect()
@@ -166,8 +163,14 @@ export default class FindIntegration extends React.Component{
                     >
                     {this.selected &&
                         <div className = {styles.integrationLogin}>
-                            <input className = {[styles.input,styles.userName].join(' ')} />
-                            <input className = {[styles.input,styles.password].join(' ')} />
+                            <div className = {styles.loginInputWrapper}>
+                                <Icon img = "person" size = "small" className = {styles.userNameIcon} />
+                                <input placeholder = "Username" className = {[styles.input,styles.userName].join(' ')} />
+                            </div>
+                            <div className = {styles.loginInputWrapper}>
+                                <Icon img = "lock" size = "small" className = {styles.passwordIcon} />
+                                <input placeholder = "Password" className = {[styles.input,styles.password].join(' ')} />
+                            </div>
                             <Button
                                 className = {styles.signInButton}
                                 label = "Securely sign in"
@@ -177,15 +180,16 @@ export default class FindIntegration extends React.Component{
                         </div>
                     }
                     </FlipMove>
-                
-                    <MockOutsideApp
-                        app = "myChart"
-                        display = {this.appOverlay}
-                        // close = {this.toggleFakeApp}
-                        onConfirm = {()=>{
-                            this.toggleFakeApp()
-                        }}
-                    />
+                    {/* 
+                        <MockOutsideApp
+                            app = "myChart"
+                            display = {this.appOverlay}
+                            // close = {this.toggleFakeApp}
+                            onConfirm = {()=>{
+                                this.toggleFakeApp()
+                            }}
+                        />
+                    */}
 
             </div>  
         )

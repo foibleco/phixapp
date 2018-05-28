@@ -2,7 +2,6 @@ import React from 'react'
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 
-import '../../App.css'
 import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
