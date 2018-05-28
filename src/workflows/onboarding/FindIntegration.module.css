@@ -118,6 +118,10 @@
     .integrationLogin input:focus{
         appearance: none;
     }
+    .integrationLogin input::placeholder{
+        /*color: var(--lightpurple);*/
+        color: #d7d7d7;
+    }
     .integrationLogin input.userName{
         appearance: none;
         outline: none;

@@ -9,6 +9,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-flip-move": "^3.0.1",
+    "react-svg": "^4.0.13",
     "zipcodes": "^6.0.0"
   },
   "scripts": {

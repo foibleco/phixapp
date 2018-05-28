@@ -6,8 +6,17 @@
     align-items: center;
 }
 .image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    border: 1px solid var(--mediumpurple);
+}
+.appBadge{
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--lightpurple);
+    box-shadow: var(--basicshadow);
 }
 .context{
     padding: 25px;

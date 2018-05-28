@@ -1,5 +1,6 @@
 import React from 'react'
 import styles from './Icon.module.css'
+import ReactSVG from 'react-svg'
 
 export const iconlist = {
     //back: require('./assets/back.svg'),
@@ -42,5 +43,17 @@ export const Icon = (props) => {
             style = {{backgroundImage: `url(${iconlist[props.img]})`}}
             onClick = {props.onClick}
         /> 
+    )
+}
+
+export const Icon2 = (props) => {
+    return(
+        <ReactSVG
+            className = {[styles.icon, styles[props.size], props.className].join(' ')}
+            onClick = {props.onClick}
+            path = {iconlist[props.img]}
+            svgClassName = {styles.iconSvg}
+            svgStyle = {{fill: 'green'}}
+        />
     )
 }

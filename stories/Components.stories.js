@@ -8,7 +8,7 @@ import styles from './Components.module.css'
 
 import Button, {CircleButton, ButtonGroup} from '../src/components/Button'
 import Header from '../src/components/Header'
-import {Icon, iconlist} from '../src/components/Icon'
+import {Icon, Icon2, iconlist} from '../src/components/Icon'
 import {List} from '../src/components/List'
 import MockOutsideApp from '../src/components/MockOutsideApp'
 
@@ -43,6 +43,19 @@ storiesOf('Components', module).add('Header', ()=>{
                 {Object.keys(iconlist).map((icon)=>{
                     return(
                         <Icon img = {icon} />
+                    )
+                })}
+            </div>
+        )
+    })
+    .add('Icon2', ()=>{
+        // console.log(iconlist)
+        console.log(Object.keys(iconlist))
+        return (
+            <div className = {styles.iconGrid}>
+                {Object.keys(iconlist).map((icon)=>{
+                    return(
+                        <Icon2 img = {icon} size = "large"/>
                     )
                 })}
             </div>
