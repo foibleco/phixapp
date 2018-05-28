@@ -17,6 +17,7 @@ var zipcodes = require('zipcodes')
 @observer
 export default class PickIntegrationTypes extends React.Component{
 
+    @observable userZIP = null
     @observable selected = []
     @action toggleIntegration = (int) => {
         if(this.selected.includes(int)) this.selected.splice(this.selected.indexOf(int),1)
@@ -24,12 +25,14 @@ export default class PickIntegrationTypes extends React.Component{
     }
     @observable zipCheck = false
 
+    @action setZIP = (zip) => this.userZIP = zip
+
     @action batchSync = (e, forceWithoutZIP) => {
-        if(this.selected.includes('Care Provider') && !forceWithoutZIP){
+        if(this.selected.includes('Care Provider') && !forceWithoutZIP && !this.userZIP){
             this.zipCheck = true
         }
         else{
-            this.props.advance()
+            this.props.onComplete(this.selected)
         }
     }
 
@@ -152,7 +155,7 @@ export default class PickIntegrationTypes extends React.Component{
                         <ZipCheck 
                             onComplete = {this.batchSync}
                             onDecline = {(e)=>this.batchSync(e,true)}
-                            setZIP = {this.props.setZIP}
+                            setZIP = {this.setZIP}
                         />
                     }
                 </FlipMove>
@@ -162,9 +165,6 @@ export default class PickIntegrationTypes extends React.Component{
 
 }
 
-PickIntegrationTypes.defaultProps = {
-    setZIP: (zip) => {console.log('parent of pickintegrationtypes needs a setZIP function', zip)}
-}
 
 @observer
 class ZipCheck extends React.Component{

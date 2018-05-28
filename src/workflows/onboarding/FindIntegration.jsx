@@ -24,18 +24,16 @@ const mockEntryLists = {
 export default class FindIntegration extends React.Component{
     @observable accountTypeIndex = 0 //which # acct are we on in the accts user chose to sync? 
        @observable selected = null //the name of item user selects from list
-       @observable mode = 'search' // search, integrate (login + outsideapp), loading, next 
-       @action setMode = (newMode) => this.mode = newMode
+       @action unselect = () => this.selected = null //for back operations?
     @observable filteringBy = 'network' //only applicable to care provider i think
     //list animation stuff
     @observable readyToAnimate = true
     @observable animateDirection = 1
     @observable appOverlay = false
 
-    // @action setMode = (mode) => this.mode = mode
     @action select = (item) =>{ 
         this.selected = item
-        this.setMode('integrate')
+        this.props.onSelect()
     }
     @action filterListByType = (type) => {
         if(!this.readyToAnimate){
@@ -52,16 +50,23 @@ export default class FindIntegration extends React.Component{
     }
     @action setAnimateReady = (ready) => this.readyToAnimate = ready
     @action toggleFakeApp = () => { this.appOverlay = !this.appOverlay }
+
+    componentDidUpdate(prevProps){
+        if(prevProps.mode==='login' && this.props.mode==='find') this.unselect()
+    }
+
     render(){
-        console.log(this.props.accts[this.accountTypeIndex])
+
         const {filteringBy} = this
 
-        const computedEntryList =  mockEntryLists[this.props.accts[this.accountTypeIndex]]
+        console.log(mockEntryLists[this.props.integration])
+
+        const computedEntryList =  mockEntryLists[this.props.integration]
             .filter((entry)=>{
                 //flawed but care providers is the only filterable option for now
                 // if(this.searching) return entry.name.includes(searchstring)
                 if(this.selected) return entry.name === this.selected
-                if(this.props.accts[this.accountTypeIndex]==='Care Provider') return entry.type===this.filteringBy
+                if(this.props.integration==='Care Provider') return entry.type===this.filteringBy
                 else return entry
             })
             .map((entry)=>{
@@ -155,7 +160,8 @@ export default class FindIntegration extends React.Component{
                         leaveAnimation = {{
                             from: {opacity: 1}, to: {opacity: 0}
                         }}
-                        delay = {400}
+                        delay = {this.props.mode === 'login'? 400 : 0}
+                        disableAllAnimations = {this.props.mode === 'find'? true: false}
                         className = {styles.loginContainer}
                     >
                     {this.selected &&
@@ -178,7 +184,6 @@ export default class FindIntegration extends React.Component{
                         // close = {this.toggleFakeApp}
                         onConfirm = {()=>{
                             this.toggleFakeApp()
-                            this.setMode('uploading')
                         }}
                     />
 

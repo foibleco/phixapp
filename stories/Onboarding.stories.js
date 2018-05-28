@@ -4,6 +4,7 @@ import { withViewport, configureViewport } from '@storybook/addon-viewport'
 import { withKnobs, select} from '@storybook/addon-knobs'
 
 import '../src/App.css'
+import Onboarding from '../src/workflows/onboarding/Onboarding'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 
@@ -12,7 +13,13 @@ addDecorator(withKnobs)
 // console.log(configureViewport)
 
 
-storiesOf('Onboarding', module).add('PickIntegrationTypes',()=>{
+storiesOf('Onboarding', module)
+    .add('Onboarding master component', () =>{
+        return(
+            <Onboarding />
+        )
+    })
+    .add('PickIntegrationTypes',()=>{
         return (
             <div style = {{height: '100vh', width: '100vw'}}>
                 <PickIntegrationTypes/>
@@ -20,6 +27,8 @@ storiesOf('Onboarding', module).add('PickIntegrationTypes',()=>{
         )
     })
     .add('FindIntegration', ()=>{
-        return <FindIntegration />
+        return <FindIntegration 
+            integration = "Care Provider"
+        />
 
     })

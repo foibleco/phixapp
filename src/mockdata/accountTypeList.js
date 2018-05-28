@@ -9,7 +9,7 @@ const syncableAccountTypes = [
             'Doctors',
         ],
         examples: [
-            'Kaiser Permanente',
+            'Kaiser',
             'Dignity Health',
             'One Medical Group',
             'Sutter Health',
@@ -21,7 +21,7 @@ const syncableAccountTypes = [
     {
         title: 'Health Insurance',
         examples: [
-            'Kaiser Permanente',
+            'Kaiser',
             'Anthem BlueCross',
             'UnitedHealthcare',
             'Aetna',
@@ -46,7 +46,7 @@ const syncableAccountTypes = [
     },
     {
         title: 'Wearable Devices',
-        examples: ['Fitbit', 'Apple Watch', 'Garmin', 'Aetna'],
+        examples: ['Fitbit', 'Apple Watch', 'Garmin'],
         icon: 'wearable',
     },
 ]
