@@ -9,7 +9,7 @@ import styles from './Components.module.css'
 import Button, {CircleButton, ButtonGroup} from '../src/components/Button'
 import Header from '../src/components/Header'
 import {Icon, iconlist} from '../src/components/Icon'
-import {List} from '../src/components/Icon'
+import {List} from '../src/components/List'
 import MockOutsideApp from '../src/components/MockOutsideApp'
 
 addDecorator(withViewport('iphone6'))
@@ -49,8 +49,21 @@ storiesOf('Components', module).add('Header', ()=>{
         )
     })
     .add('List', ()=>{
-        return <List />
+        const fifthItem = boolean('fifth item for testing', false)
+        return <List 
+            options = {[
+                'Item 1',
+                'Item 2',
+                'Item 3',
+                'Item 4',
+                fifthItem? 'Item 5' : ''
+            ]}
+        />
     })
     .add('MockOutsideApp', ()=>{
-        return <MockOutsideApp />
+        const display = boolean('display', false)
+        const app = select('fake app: ', [
+            'myChart'
+        ], 'myChart')
+        return <MockOutsideApp app = {app} display = {display} />
     })
