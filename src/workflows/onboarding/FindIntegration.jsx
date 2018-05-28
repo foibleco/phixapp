@@ -174,12 +174,14 @@ export default class FindIntegration extends React.Component{
                             <Button
                                 className = {styles.signInButton}
                                 label = "Securely sign in"
-                                onClick = {this.toggleFakeApp}
+                                onClick = {()=> this.props.onLogin(this.selected)}
                             />
                             <div className = {styles.forgotPass}> Forgot your password? </div>
                         </div>
                     }
                     </FlipMove>
+
+
                     {/* 
                         <MockOutsideApp
                             app = "myChart"

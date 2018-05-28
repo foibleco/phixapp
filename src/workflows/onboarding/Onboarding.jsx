@@ -5,25 +5,36 @@ import {observer} from 'mobx-react'
 import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
+import OpenIntegrationDialog from './OpenIntegrationDialog'
 
 
-const steps = ['pick', 'find', 'login']
+const steps = ['pick', 'find', 'login', 'notify']
 
 @observer
 export default class Onboarding extends React.Component{
     @observable step = 'pick' //pick, find, login 
     @observable integrations = []
+    @observable currentIntegration = null
     @observable syncedIntegrations = []
     @action setIntegrations = (integrations) =>{ 
         console.log('user set',integrations.length,'integrations:',integrations.join(', '))
         this.integrations = integrations
-        this.step = 'find'
+        this.next()
     }
-    @action pickedIntegrationAccount = () => this.step = 'login'
+    @action setCurrentIntegration = (integration) => {
+        this.currentIntegration = integration 
+        console.log('logged in to / now asking permission for', this.currentIntegration)
+        this.next()
+    }
+    @action pickedIntegrationAccount = () => this.next()
     @action syncedIntegrationAccount = () => {
 
     }
-
+    @action next = () => {
+        const currentStepIndex = steps.indexOf(this.step)
+        if(currentStepIndex===steps.length-1) return
+        else this.step = steps[currentStepIndex+1]
+    }
     @action goBack = () => {
         const currentStepIndex = steps.indexOf(this.step)
         if(currentStepIndex===0) return
@@ -51,6 +62,12 @@ export default class Onboarding extends React.Component{
                         integration = {this.integrations[0]} 
                         onSelect = {this.pickedIntegrationAccount}
                         mode = {this.step}
+                        onLogin = {this.setCurrentIntegration}
+                    />
+                }
+                {this.step === 'notify' &&
+                    <OpenIntegrationDialog
+
                     />
                 }
             </div>
