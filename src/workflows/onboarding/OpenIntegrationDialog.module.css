@@ -17,6 +17,7 @@
     border-radius: 8px;
     border: 1px solid var(--lightpurple);
     box-shadow: var(--basicshadow);
+    background: #fbfbfc;
 }
 .context{
     padding: 25px;
