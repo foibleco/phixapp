@@ -1,7 +1,7 @@
 import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withViewport, configureViewport } from '@storybook/addon-viewport'
-import { withKnobs, select} from '@storybook/addon-knobs'
+import { withKnobs, select, boolean} from '@storybook/addon-knobs'
 
 import '../src/App.css'
 import styles from './Components.module.css'
@@ -16,10 +16,24 @@ addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
 
 storiesOf('Components', module).add('Header', ()=>{
-    return <Header />
+    const titles = select('test titles', ['Who\'s your care provider?', 'Select accounts to sync', 'hello world'], 'hello world')
+    const backbutton = boolean('backbutton', false)
+    const search = boolean('search', false)
+    const dotboiga = boolean('dotboiga', false)
+    return <Header title = {titles} backButton = {backbutton} dotburger = {dotboiga} search = {search}/>
 })
     .add('Button', ()=>{
-        return <Button label = "Button" />
+        return (
+            <React.Fragment>
+                <Button label = "Button" />
+                <CircleButton img = "locationpin" />
+                <ButtonGroup options = {[
+                    {name: 'hello'},
+                    {name: 'world'},
+                    {name: 'option 3'}
+                ]}/>
+            </React.Fragment>
+        )
     })
     .add('Icon', ()=>{
         // console.log(iconlist)

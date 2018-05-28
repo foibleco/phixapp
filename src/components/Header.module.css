@@ -3,54 +3,62 @@
     width: 100%;
     height: 55px;
     /*color: var(--faintpurple);*/
+    padding: 0 15px;
     color: white;
     box-sizing: border-box;
     letter-spacing: 0.03rem;
     display: flex;
     align-items: center;
-    justify-content: space-around;
+    justify-content: space-between;
     white-space: nowrap;
     transform: translateX(0px);
 }
-.header.offsetForBackBtn{
-    transform: translateX(15px);
+.title{
+    transition: transform .2s;
+}
+.titleWrapper{ 
+    width: calc(100% - 80px);
+    transition: transform .2s; 
+    /*overflow: hidden;*/
+}
+.leftOffset{
+    transform: translateX(30px);
+}
+
+.gradientOverflowBound{
+    position: absolute;
+    left: 0;
+    width: 15px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, var(--mediumpurple), var(--mediumpurple) 40% ,rgba(135,145,199,0));
+    transform-origin: 0% 50%;
+    transition: transform .2s;
+    z-index: 3;
+}
+.gradientOverflowBound.wide{
+    transform: scaleX(3);
 }
 
 .backButton{
     position: absolute;
-    /*left: 15px;*/
-    left: 0;
-    opacity: 0;
     transform: translateX(-30px);
-    transition:  opacity .2s;
+    opacity: 0;
+    pointer-events: none;
+    transition: transform .2s, opacity .2s;
+    z-index: 4;
 }
 .backButton.visible{
+    transform: translateX(0);
     opacity: 1;
-
-}
-.titleWrapper{
-    position: absolute;
-    left: 15px;
-    height: 100%;
-    display: flex; align-items: center;
-    transition: transform .2s;
-}
-.titleWrapper.offset{
-    transform: translateX(30px);
-}
-.title{
-    position: absolute;
-    opacity: 0;
-    transition: opacity .2s, transform .2s;
-}
-.title.visible{
-    opacity: 1;
-    /*transform: translateX(0);*/
-}
-.title.inFuture{
-    /*transform: translateX(75px);*/
-}
-.title.inPast{
-    /*transform: translateY(-75px;);*/
+    pointer-events: auto;
 }
 
+.right{
+    display: flex;
+    align-items: center;
+}
+.dotboiga{
+    margin-left: 5px;
+}

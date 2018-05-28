@@ -9,10 +9,13 @@ export const iconlist = {
     genetics: require('./assets/genetics.svg'),
     hsapig: require('./assets/hsapig.svg'),
     wearable: require('./assets/wearable.svg'),
+
     x: require('./assets/x.svg'),
     locationpin: require('./assets/locationpin.svg'),
     check: require('./assets/check.svg'),
     chevleft: require('./assets/chevleft.svg'),
+    search: require('./assets/searchzoom.svg'),
+    dotburger: require('./assets/dotboiga.svg'),
 
     stanford: require('./assets/companies/stanford.svg'),
     kaiser: require('./assets/companies/kaiser.svg'),
