@@ -8,7 +8,7 @@ import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
 
 
-const steps = ['pick', 'find', 'login', 'notify']
+const steps = ['pick', 'find', 'login', 'notify', 'outside']
 
 @observer
 export default class Onboarding extends React.Component{
@@ -66,11 +66,21 @@ export default class Onboarding extends React.Component{
                         onLogin = {this.setCurrentIntegration}
                     />
                 }
-                {this.step === 'notify' &&
+                {(this.step === 'notify' || this.step === 'outside') &&
                     <OpenIntegrationDialog
+                        integrateWith = {this.currentIntegration}
+                        type = {this.integrations[0]}
+                        onConfirm = {this.step==='notify'? this.next : ''}
 
                     />
                 }
+                {this.step === 'outside' &&
+                    <MockOutsideApp
+                        app = "myChart"
+                    />
+                }
+
+
             </div>
         )
     }

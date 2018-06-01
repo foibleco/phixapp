@@ -14,11 +14,7 @@ import styles from './FindIntegration.module.css'
 import {List} from '../../components/List'
 import {Icon} from '../../components/Icon'
 import { careProviders, insurers } from '../../mockdata/careProviders.js'
-
-const mockEntryLists = {
-    'Care Provider': careProviders,
-    'Health Insurance': insurers
-}
+import mockEntryLists from '../../mockdata/mockEntryLists'
 
 @observer
 export default class FindIntegration extends React.Component{

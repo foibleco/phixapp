@@ -5,12 +5,12 @@ doctors = sortBy(doctors, 'name')
 
 const careProviders = [
     //networks have icon
-    {name: 'Dignity Health', type: 'network', logo: 'dignityhealth'},
-    {name: 'Kaiser Permanente', type: 'network', logo: 'kaiser'},
-    {name: 'One Medical Group', type: 'network', logo: 'onemedical'},
-    {name: 'Sutter Health', type: 'network', logo: 'sutter'},
-    {name: 'Stanford Health Care', type: 'network', logo: 'stanford'},
-    {name: 'UCSF Medical Center', type: 'network', logo: 'ucsf'},
+    {name: 'Dignity Health', type: 'network', logo: 'dignityhealth', portal: 'My Care - Dignity Health'},
+    {name: 'Kaiser Permanente', type: 'network', logo: 'kaiser' },
+    {name: 'One Medical Group', type: 'network', logo: 'onemedical', portal: 'One Medical'},
+    {name: 'Sutter Health', type: 'network', logo: 'sutter', portal: 'Sutter My Health Online'},
+    {name: 'Stanford Health Care', type: 'network', logo: 'stanford', portal: 'Stanford MyHealth'},
+    {name: 'UCSF Medical Center', type: 'network', logo: 'ucsf', portal: 'UCSF MyChart'},
 
     {name: 'Alameda Hospital', type: 'hospital', network: 'Alameda Health System', address: '3600 Broadway St', city: 'Oakland'},
     {name: 'Alta Bates Summit Medical Center | Summit Campus', type: 'hospital', network: 'Sutter Health', address: '350 Hawthorne Ave', city: 'Oakland'},
