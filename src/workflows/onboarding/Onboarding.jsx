@@ -38,6 +38,7 @@ export default class Onboarding extends React.Component{
     @action goBack = () => {
         const currentStepIndex = steps.indexOf(this.step)
         if(currentStepIndex===0) return
+        else if(this.step==='notify') this.step = 'find'
         else this.step = steps[currentStepIndex-1]
         //TODO: clearing applicable data when user goes back
             //also, some kind of sanity check dialog for certain back operations
