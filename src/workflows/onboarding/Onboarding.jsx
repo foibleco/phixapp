@@ -7,8 +7,9 @@ import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
 import MockIntegration from './MockIntegration'
+import IntegrationUploadCompleteDialog from './IntegrationUploadCompleteDialog'
 
-const steps = ['pick', 'find', 'login', 'notify', 'outside']
+const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading']
 
 @observer
 export default class Onboarding extends React.Component{
@@ -74,10 +75,19 @@ export default class Onboarding extends React.Component{
 
                     />
                 }
-                {this.step === 'outside' &&
+                {(this.step === 'outside' || this.step === 'uploading') &&
                     <MockIntegration
                         app = "myChart"
-                        display = {true}
+                        display = {this.step === 'uploading'? false : true}
+                        onConfirm = {this.next}
+                        onCancel = {this.goBack}
+                    />
+                }
+                {this.step === 'uploading' && 
+                    <IntegrationUploadCompleteDialog
+                        integrateWith = {this.currentIntegration}
+                        type = {this.integrations[0]}
+                        nextType = {this.integrations[1] || 'none'}
                     />
                 }
 

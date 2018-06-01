@@ -6,6 +6,7 @@ import {find} from 'lodash'
 import styles from './OpenIntegrationDialog.module.css'
 import Button from '../../components/Button'
 import {Icon} from '../../components/Icon'
+import SimpleDialog from '../../components/SimpleDialog'
 
 import mockEntryLists from '../../mockdata/mockEntryLists'
 
@@ -16,20 +17,16 @@ export default class OpenIntegrationDialog extends React.Component{
         const app = find(mockEntryLists[this.props.type], (o)=> { return o.name === this.props.integrateWith})
         const portal = app.portal || app.name 
         return(
-            <div className = {styles.openIntegrationDialog}>
-                <div className = {styles.image}>
+            <SimpleDialog
+                img = {(
                     <div className = {styles.appBadge}>
-                        <Icon img = {app.logo} size = "large" />
+                       <Icon img = {app.logo} size = "large" />
                     </div>
-                </div>
-                <p className = {styles.context}>
-                    {portal} will ask you for permission to authorize PHIX to use your data now -- make sure to say yes. 
-                </p>
-                <Button 
-                    label = {`OK, go to ${portal}`} 
-                    onClick = {this.props.onConfirm}
-                />
-            </div>
+                )}
+                context = {portal + ' will ask you for permission to authorize PHIX to use your data now -- make sure to say yes.'}
+                buttonLabel = {`OK, open ${portal}`}
+                onConfirm = {this.props.onConfirm}
+            />
         )
     }
 }

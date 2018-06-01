@@ -11,6 +11,7 @@ import Header from '../src/components/Header'
 import {Icon, Icon2, iconlist} from '../src/components/Icon'
 import {List} from '../src/components/List'
 import MockOutsideApp from '../src/components/MockOutsideApp'
+import SimpleDialog from '../src/components/SimpleDialog'
 
 addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
@@ -79,4 +80,15 @@ storiesOf('Components', module).add('Header', ()=>{
             'myChart'
         ], 'myChart')
         return <MockOutsideApp app = {app} display = {display} />
+    })
+    .add('SimpleDialog', ()=>{
+        const img = boolean('image false?', false)
+        const hasButton = boolean('has button', true)
+        return <SimpleDialog
+             img = {img? undefined: 'ucsf'}
+             context = {'hi fuck you'}
+             buttonLabel = {'buttonlabel'}
+             hasButton = {hasButton}
+             onConfirm = {()=> console.log(' need onConfirm prop ')}
+        />
     })

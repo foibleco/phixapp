@@ -8,6 +8,7 @@ import Onboarding from '../src/workflows/onboarding/Onboarding'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 import OpenIntegrationDialog from '../src/workflows/onboarding/OpenIntegrationDialog'
+import IntegrationUploadCompleteDialog from '../src/workflows/onboarding/IntegrationUploadCompleteDialog'
 
 addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
@@ -34,5 +35,11 @@ storiesOf('Onboarding', module)
 
     })
     .add('OpenIntegrationDialog', ()=>{
-        return <OpenIntegrationDialog app = 'MyChart' />
+        return <OpenIntegrationDialog 
+            integrateWith = "Kaiser Permanente"
+            type = "Care Provider"
+         />
+    })
+    .add('IntegrationUploadCompleteDialog', ()=>{
+        return <IntegrationUploadCompleteDialog />
     })

@@ -62,7 +62,7 @@ export default class MockIntegration extends React.Component{
                                             PHIX will receive the following: your patient records and history, doctors, conditions, dependents, appointments, and bills.
                                         </p>
                                         <div className = {styles.actions}>
-                                            <Button className = {[styles.button, styles.cancel].join(' ')} label = "Cancel" />
+                                            <Button className = {[styles.button, styles.cancel].join(' ')} label = "Cancel" onClick = {this.props.onCancel} />
                                             <Button className = {[styles.button, styles.ok].join(' ')} label = "OK" onClick = {this.props.onConfirm} />
                                         </div>
                                 </div>

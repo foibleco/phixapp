@@ -4,14 +4,19 @@ import {observer} from 'mobx-react'
 
 import styles from './App.module.css'
 
+import SimpleDialog from './components/SimpleDialog'
+
 @observer
 class App extends Component {
   @observable testObservable = 'hello'
   render() {
     return (
-      <div className={styles.testModule}>
-        wowwww {this.testObservable}
-      </div>
+        <SimpleDialog
+            img = "locationpin"
+            context = "fuck you"
+            buttonLabel = "button"
+            hasButton = {true}
+        />
     );
   }
 }

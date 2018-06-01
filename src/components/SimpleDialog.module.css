@@ -1,0 +1,28 @@
+.dialog{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 40px 25px 40px;
+}
+.image{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.context{
+    margin-top: 20px;
+    color: var(--mediumpurple);
+    line-height: 1.5rem;
+}
+
+.button{
+    width: 100%;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
