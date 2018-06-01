@@ -27,7 +27,7 @@ export default class OpenIntegrationDialog extends React.Component{
                 </p>
                 <Button 
                     label = {`OK, go to ${portal}`} 
-                    onclick = {this.props.onConfirm}
+                    onClick = {this.props.onConfirm}
                 />
             </div>
         )

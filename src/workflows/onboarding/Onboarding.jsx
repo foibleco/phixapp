@@ -6,7 +6,7 @@ import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
-
+import MockOutsideApp from '../../components/MockOutsideApp'
 
 const steps = ['pick', 'find', 'login', 'notify', 'outside']
 
@@ -70,13 +70,14 @@ export default class Onboarding extends React.Component{
                     <OpenIntegrationDialog
                         integrateWith = {this.currentIntegration}
                         type = {this.integrations[0]}
-                        onConfirm = {this.step==='notify'? this.next : ''}
+                        onConfirm = {this.next}
 
                     />
                 }
                 {this.step === 'outside' &&
                     <MockOutsideApp
                         app = "myChart"
+                        display = {true}
                     />
                 }
 
