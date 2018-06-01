@@ -6,7 +6,7 @@ import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
-import MockOutsideApp from '../../components/MockOutsideApp'
+import MockIntegration from './MockIntegration'
 
 const steps = ['pick', 'find', 'login', 'notify', 'outside']
 
@@ -75,7 +75,7 @@ export default class Onboarding extends React.Component{
                     />
                 }
                 {this.step === 'outside' &&
-                    <MockOutsideApp
+                    <MockIntegration
                         app = "myChart"
                         display = {true}
                     />

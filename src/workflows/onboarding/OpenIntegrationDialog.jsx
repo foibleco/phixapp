@@ -14,7 +14,7 @@ export default class OpenIntegrationDialog extends React.Component{
 
     render(){
         const app = find(mockEntryLists[this.props.type], (o)=> { return o.name === this.props.integrateWith})
-        const portal = app.portal || app.name
+        const portal = app.portal || app.name 
         return(
             <div className = {styles.openIntegrationDialog}>
                 <div className = {styles.image}>
