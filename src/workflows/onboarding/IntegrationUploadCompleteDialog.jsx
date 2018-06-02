@@ -50,28 +50,30 @@ export const IntegrationUploadAnimation = (props) => {
                 enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
                 leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
             >
-            
+            {!props.complete && 
                 <div className = {styles.appBadge}>
                     <Icon img = "ucsf" />
                 </div>
-            
+            }
             <FlipMove 
                 key = "logoAnim"
                 className = {styles.logoAnimation}
                 enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
-                leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
+                leaveAnimation = {{from: {opacity: 1, transform: 'scaleX(1)'}, to: {opacity: 0, transform: 'scaleX(0.5)'}}}
             >
                 {!props.complete &&
-                <div className = {styles.dataflow}>
-                    <Icon img = "logo_data_top" className = {styles.dataTop} />
-                    <Icon img = "logo_data_mid" className = {styles.dataMid} />
-                    <Icon img = "logo_data_low" className = {styles.dataLow} />
+                <div style = {{zIndex: 1}}>
+                    <div className = {styles.dataflow}>
+                        <Icon img = "logo_data_top" className = {styles.dataTop} />
+                        <Icon img = "logo_data_mid" className = {styles.dataMid} />
+                        <Icon img = "logo_data_low" className = {styles.dataLow} />
+                    </div>
                 </div>
                 }
                 <div style = {{zIndex: 2}} key = "logo" >  
                     <Icon className = {styles.logo} img = "phix_nodata" size = "centerpiece"  /> 
                 </div>
-                <div style = {{position: 'absolute', right: 0}}> 
+                <div style = {{position: 'absolute'}}> 
                     <Icon className = {[styles.logodata, props.complete? styles.complete: ''].join(' ')} img = "phix_dataonly" size = "centerpiece"  />
                 </div>
             </FlipMove>

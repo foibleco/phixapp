@@ -8,19 +8,24 @@
 
 .uploadAnimation{
     /*margin-right: 2.75rem;*/
+    width: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 .logoAnimation{
+    width: 175px;
     position: relative;
     display: flex;
     align-items: center;
+    justify-content: center;
     margin-bottom: 10px;
 }
 
 
 .appBadge{
-    display: inline-flex;
+    width: 72px;
+    display: flex;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid var(--lightpurple);
@@ -53,11 +58,12 @@ and remove dataflow*/
 .logodata::before{
     content: '';
     position: absolute;
+    left: 0; right: 0; margin: auto;
     width: 100%;
     height: 100%;
     background: linear-gradient(90deg, rgba(255,255,255,1) 60%, rgba(255,255,255,0) 100%);
     /*opacity: 0.5;*/
-    transition: transform .3s;
+    transition: transform .3s .35s;
 }
 .logodata.complete::before{
     transform: translateX(-100px);
@@ -66,7 +72,7 @@ and remove dataflow*/
 
 .dataflow{
     z-index: 1;
-    transform: scale(1.5) translate(2px, 7px) ;
+    transform: scale(1.45) translate(2px, 8px) ;
     display: flex;
     height: 30px;
     flex-direction: column;
@@ -86,6 +92,10 @@ and remove dataflow*/
     animation-duration: .75s;
     background-repeat: repeat-x;
     animation-timing-function: linear;
+
+    /*box-sizing: border-box;*/
+    /*border: 1px solid rgba(0,0,0,0.1);*/
+    background-size: 100% cover;
 }
 
 .dataTop::before, .dataMid::before, .dataLow::before{
@@ -94,12 +104,12 @@ and remove dataflow*/
     width: 100%; height: 100%;
 }
 .dataTop::after, .dataMid::after, .dataLow::after{
-    position: absolute;
+/*    position: absolute;
     content: '';
     right: 0;
     background: var(--actionpurple);
-    top: 1px;
-    width: 6px; height: 5.75px;
+    top: 0;
+    width: 6px; height: 8px;*/
 }
 
 .dataTop{animation-duration: 1.5s;}
