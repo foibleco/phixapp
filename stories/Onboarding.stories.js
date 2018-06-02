@@ -1,14 +1,17 @@
 import React from 'react';
 import { storiesOf, addDecorator } from '@storybook/react';
 import { withViewport, configureViewport } from '@storybook/addon-viewport'
-import { withKnobs, select} from '@storybook/addon-knobs'
+import { withKnobs, select, boolean } from '@storybook/addon-knobs'
 
 import '../src/App.css'
 import Onboarding from '../src/workflows/onboarding/Onboarding'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 import OpenIntegrationDialog from '../src/workflows/onboarding/OpenIntegrationDialog'
+import MockIntegration from '../src/workflows/onboarding/MockIntegration'
+
 import IntegrationUploadCompleteDialog from '../src/workflows/onboarding/IntegrationUploadCompleteDialog'
+
 
 addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
@@ -39,6 +42,13 @@ storiesOf('Onboarding', module)
             integrateWith = "Kaiser Permanente"
             type = "Care Provider"
          />
+    })
+    .add('MockIntegration', ()=>{
+        const display = boolean('display', true)
+        return <MockIntegration
+            app = "myChart"
+            display = {display}
+        />
     })
     .add('IntegrationUploadCompleteDialog', ()=>{
         return <IntegrationUploadCompleteDialog />

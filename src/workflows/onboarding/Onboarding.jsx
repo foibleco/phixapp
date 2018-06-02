@@ -16,6 +16,7 @@ export default class Onboarding extends React.Component{
     @observable step = 'pick' //pick, find, login 
     @observable integrations = []
     @observable currentIntegration = null
+    @observable currentIntegrationTypeIndex = 0
     @observable syncedIntegrations = []
     @action setIntegrations = (integrations) =>{ 
         console.log('user set',integrations.length,'integrations:',integrations.join(', '))
@@ -29,7 +30,28 @@ export default class Onboarding extends React.Component{
     }
     @action pickedIntegrationAccount = () => this.next()
     @action syncedIntegrationAccount = () => {
-
+        this.syncedIntegrations.push({
+            type: this.integrations[this.currentIntegrationTypeIndex],
+            name: this.currentIntegration,
+            data: 'foo'
+        })
+    }
+    @action startNextIntegrationType = () => {
+        console.log('user done with syncing', this.integrations[this.currentIntegrationTypeIndex])
+        console.log(this.syncedIntegrations)
+        if(this.currentIntegrationTypeIndex === this.integrations.length-1){
+            console.log('no more integrations - call onboarding completion dialog')
+            return
+        }
+        this.currentIntegrationTypeIndex ++
+        this.currentIntegration = null
+        this.step = 'find'
+    }
+    @action addAnotherIntegrationOfSameType = () => {
+        console.log('user wants to add another', this.integrations[this.currentIntegrationTypeIndex])
+        console.log(this.syncedIntegrations)
+        this.step = 'find'
+        this.currentIntegration = null
     }
     @action next = () => {
         const currentStepIndex = steps.indexOf(this.step)
@@ -61,7 +83,7 @@ export default class Onboarding extends React.Component{
                 }
                 {(this.step === 'find' || this.step=== 'login') &&
                     <FindIntegration 
-                        integration = {this.integrations[0]} 
+                        integration = {this.integrations[this.currentIntegrationTypeIndex]} 
                         onSelect = {this.pickedIntegrationAccount}
                         mode = {this.step}
                         onLogin = {this.setCurrentIntegration}
@@ -70,7 +92,7 @@ export default class Onboarding extends React.Component{
                 {(this.step === 'notify' || this.step === 'outside') &&
                     <OpenIntegrationDialog
                         integrateWith = {this.currentIntegration}
-                        type = {this.integrations[0]}
+                        type = {this.integrations[this.currentIntegrationTypeIndex]}
                         onConfirm = {this.next}
 
                     />
@@ -86,8 +108,14 @@ export default class Onboarding extends React.Component{
                 {this.step === 'uploading' && 
                     <IntegrationUploadCompleteDialog
                         integrateWith = {this.currentIntegration}
-                        type = {this.integrations[0]}
-                        nextType = {this.integrations[1] || 'none'}
+                        type = {this.integrations[this.currentIntegrationTypeIndex]}
+                        nextType = {
+                            this.currentIntegrationTypeIndex < this.integrations.length - 1? this.integrations[this.currentIntegrationTypeIndex+1] 
+                                : 'none'
+                        }
+                        onUploadComplete = {this.syncedIntegrationAccount}
+                        startNextIntegrationType = {this.startNextIntegrationType}
+                        addAnotherIntegrationOfSameType = {this.addAnotherIntegrationOfSameType}
                     />
                 }
 

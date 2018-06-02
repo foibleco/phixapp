@@ -1,10 +1,15 @@
 .dialog{
     display: flex;
+    width: 100%;
     height: 100%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0 40px 25px 40px;
+}
+
+.flipMoveContainer{
+    width: 100%;
 }
 .image{
     display: flex;
@@ -14,15 +19,23 @@
 }
 
 .context{
+    width: 100%;
     margin-top: 20px;
     color: var(--mediumpurple);
     line-height: 1.5rem;
+    text-align: center;
 }
 
-.button{
+.button, .subButton{
+    max-width: 100%;
     width: 100%;
     margin-top: 10px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+.subButton{
+    background: white;
+    /*box-shadow: none;*/
+    color: var(--actionpurple);
 }

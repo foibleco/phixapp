@@ -41,13 +41,24 @@
     background: #F5EDEF;
     height: 100%;
     padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 .myChart .modal{
     background: white;
     box-shadow: var(--basicshadow);
     padding: 25px;
+    line-height: 1.4rem;
+    margin-bottom: 3rem;
+}
+.context{
+    margin: 0;
 }
 .myChart .actions{
+    margin-top: 25px;
     display: flex;
     justify-content: center;
 }

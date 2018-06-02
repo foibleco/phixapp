@@ -25,7 +25,7 @@ export default class OpenIntegrationDialog extends React.Component{
                 )}
                 context = {portal + ' will ask you for permission to authorize PHIX to use your data now -- make sure to say yes.'}
                 buttonLabel = {`OK, open ${portal}`}
-                onConfirm = {this.props.onConfirm}
+                onButtonClick = {this.props.onConfirm}
             />
         )
     }
