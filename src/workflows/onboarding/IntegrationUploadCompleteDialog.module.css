@@ -5,3 +5,56 @@
 .uploading{
     
 }
+
+.uploadAnimation{
+    display: flex;
+    align-items: center;
+
+}
+
+
+.appBadge{
+    display: inline-flex;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--lightpurple);
+    box-shadow: var(--basicshadow);
+    background: #fbfbfc;
+}
+
+.logo, .dataflow{
+    transform-origin: 0% 50%;
+}
+.logo{
+    transform: scale(1.5);
+}
+
+.dataflow{
+    transform: scale(1.5) translate(2px, 7px) ;
+    display: flex;
+    height: 30px;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.dataTop, .dataMid, .dataLow{
+    width: 80px; height: 8px;
+    animation-name: flow;
+    animation-iteration-count: infinite;
+    animation-duration: .75s;
+    background-repeat: repeat-x;
+    animation-timing-function: linear;
+}
+
+.dataTop, .dataLow{
+    transform: translateX(10px);
+}
+
+@keyframes :local(flow){
+    0%{
+        background-position: 0% 50%;
+    }
+    100%{
+        background-position: 100px 50%;
+    }
+}

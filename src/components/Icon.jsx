@@ -5,6 +5,10 @@ import ReactSVG from 'react-svg'
 export const iconlist = {
     phix: require('./assets/phix.svg'),
     'phix_white': require('./assets/phix_white.svg'),
+    'phix_nodata': require('./assets/phix_nodata.svg'),
+    'logo_data_low': require('./assets/logo_data_low.svg'),
+    'logo_data_mid': require('./assets/logo_data_mid.svg'),
+    'logo_data_top': require('./assets/logo_data_top.svg'),
 
     stethoscope: require('./assets/stethoscope.svg'),
     healthinsurance: require('./assets/healthinsurance.svg'),

@@ -12,15 +12,27 @@
     width: 100%;
 }
 .appBadge{
+    transform: translateX(65px);
     display: inline-flex;
     padding: 10px;
     border-radius: 8px;
     border: 1px solid var(--lightpurple);
     box-shadow: var(--basicshadow);
     background: #fbfbfc;
+    animation-duration: 0.75s;
+    animation-delay: .5s;
+    animation-name: appBadgeFadeInFromCenter;
+    animation-fill-mode: forwards;
+}
+
+@keyframes :local(appBadgeFadeInFromCenter){
+    0% { transform: translateX(65px); }
+    100%{ transform: translateX(0); }
 }
 
 .speechbubble{
+    opacity: 0;
+    transform: translateX(-35px);
     margin-left: 25px;
     position: relative;
     padding: 5px 15px;
@@ -28,7 +40,15 @@
     border-radius: 8px;
     border: 1px solid var(--lightpurple);
     box-shadow: var(--basicshadow);
+    animation-duration: .75s;
+    animation-delay: .55s;
+    animation-fill-mode: forwards;
+    animation-name: speechbubbleFadeInFromCenter;
 }
+    @keyframes :local(speechbubbleFadeInFromCenter){
+        0%{ transform: translateX(-35px); opacity: 0;}
+            100%{ transform: translateX(0px); opacity: 1;}
+    }
     .largerLogo{
         /*width: 125px;*/
         width: 75px;

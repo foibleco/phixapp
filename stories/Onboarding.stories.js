@@ -10,7 +10,7 @@ import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 import OpenIntegrationDialog from '../src/workflows/onboarding/OpenIntegrationDialog'
 import MockIntegration from '../src/workflows/onboarding/MockIntegration'
 
-import IntegrationUploadCompleteDialog from '../src/workflows/onboarding/IntegrationUploadCompleteDialog'
+import IntegrationUploadCompleteDialog, {IntegrationUploadAnimation} from '../src/workflows/onboarding/IntegrationUploadCompleteDialog'
 
 
 addDecorator(withViewport('iphone6'))
@@ -52,4 +52,7 @@ storiesOf('Onboarding', module)
     })
     .add('IntegrationUploadCompleteDialog', ()=>{
         return <IntegrationUploadCompleteDialog />
+    })
+    .add('IntegrationUploadAnimation', ()=>{
+        return <IntegrationUploadAnimation />
     })
