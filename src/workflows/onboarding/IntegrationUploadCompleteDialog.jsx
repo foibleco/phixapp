@@ -28,6 +28,7 @@ export default class IntegrationUploadCompleteDialog extends React.Component{
     render(){
         return(
             <SimpleDialog
+                selfCentering = {true}
                 img = {<IntegrationUploadAnimation complete = {!this.uploading}/>}
                 context = {
                     this.uploading? `Uploading data from ${this.props.integrateWith} to your PHIX account...`

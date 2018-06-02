@@ -1,11 +1,13 @@
 .dialog{
-    display: flex;
     width: 100%;
-    height: 100%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     padding: 0 40px 25px 40px;
+}
+.dialog.centered{
+    margin: auto;
+}
+.dialog.selfCentering{
+    position: absolute;
+    transition: transform .25s;
 }
 
 .flipMoveContainer{

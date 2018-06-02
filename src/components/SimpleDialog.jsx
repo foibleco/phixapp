@@ -1,15 +1,43 @@
 
 import React from 'react'
+import {observable, action} from 'mobx'
+import {observer} from 'mobx-react'
+import {findDOMNode} from 'react-dom'
 import FlipMove from 'react-flip-move'
 import styles from './SimpleDialog.module.css'
 
 import Button from './Button'
 import {Icon} from './Icon'
 
+@observer
 export default class SimpleDialog extends React.Component{
+
+    @observable height = null
+
+    componentDidMount(){
+        if(this.props.selfCentering){
+            this.setHeight(findDOMNode(this.container).getBoundingClientRect().height)
+        }
+    }
+
+    componentDidUpdate(){
+        if(this.props.selfCentering){
+            this.setHeight(findDOMNode(this.container).getBoundingClientRect().height)
+        }
+    }
+
+    @action setHeight = (ht) => this.height = ht
+
     render(){
     return(
-        <div className = {styles.dialog}>
+        <div 
+            ref = {this.props.selfCentering? (container) => this.container = container : ''}
+            className = {[styles.dialog, !this.props.selfCentering? styles.centered : styles.selfCentering].join(' ')}
+            style = {{
+                transform: this.props.selfCentering? `translateY(${(window.innerHeight / 2) - (this.height / 2)}px)` : ''
+            }}
+
+        >
             <FlipMove
                 className = {styles.flipMoveContainer}
                 enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
@@ -52,5 +80,6 @@ export default class SimpleDialog extends React.Component{
 }
 
 SimpleDialog.defaultProps = {
-    hasButton: true
+    hasButton: true,
+    selfCentering: false
 }
