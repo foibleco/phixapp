@@ -19,6 +19,51 @@
     box-shadow: var(--basicshadow);
     background: #fbfbfc;
 }
+
+.speechbubble{
+    margin-left: 25px;
+    position: relative;
+    padding: 5px 15px;
+    background: white;
+    border-radius: 8px;
+    border: 1px solid var(--lightpurple);
+    box-shadow: var(--basicshadow);
+}
+    .largerLogo{
+        /*width: 125px;*/
+        width: 75px;
+        height: 75px;
+    }
+    .questionMark{
+        position: absolute;
+        top: 8px;
+        right: 15px;
+        font-size: 30px;
+        color: var(--actionpurple);
+        font-weight: 600;
+    }
+    .speechbubble::before{
+
+        position: absolute;
+        top: calc(50% - 16px);
+        left: -32px;
+        content: '';
+        border-width: 16px;
+        border-style: solid;
+        border-color: transparent;
+        border-right-color: var(--lightpurple);
+    }
+    .speechbubble::after{
+        position: absolute;
+        top: calc(50% - 14px);
+        left: -27px;
+        content: '';
+        border-width: 14px;
+        border-style: solid;
+        border-color: transparent;
+        border-right-color: white;
+    }
+
 .context{
     padding: 25px;
     margin-top: 20px;

@@ -19,9 +19,15 @@ export default class OpenIntegrationDialog extends React.Component{
         return(
             <SimpleDialog
                 img = {(
-                    <div className = {styles.appBadge}>
-                       <Icon img = {app.logo} size = "large" />
-                    </div>
+                    <React.Fragment>
+                        <div className = {styles.appBadge}>
+                           <Icon img = {app.logo} size = "large" />
+                        </div>
+                        <div className = {styles.speechbubble}>
+                            <Icon className = {styles.largerLogo} img = 'phix' />
+                            <div className = {styles.questionMark}> ? </div>
+                        </div>
+                    </React.Fragment>
                 )}
                 context = {portal + ' will ask you for permission to authorize PHIX to use your data now -- make sure to say yes.'}
                 buttonLabel = {`OK, open ${portal}`}

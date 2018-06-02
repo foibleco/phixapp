@@ -3,7 +3,9 @@ import styles from './Icon.module.css'
 import ReactSVG from 'react-svg'
 
 export const iconlist = {
-    //back: require('./assets/back.svg'),
+    phix: require('./assets/phix.svg'),
+    'phix_white': require('./assets/phix_white.svg'),
+
     stethoscope: require('./assets/stethoscope.svg'),
     healthinsurance: require('./assets/healthinsurance.svg'),
     rx: require('./assets/rx.svg'),
