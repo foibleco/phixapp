@@ -2,6 +2,7 @@ import React from 'react'
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 // import {find} from 'lodash'
+import FlipMove from 'react-flip-move'
 
 import styles from './IntegrationUploadCompleteDialog.module.css'
 import Button from '../../components/Button'
@@ -27,6 +28,7 @@ export default class IntegrationUploadCompleteDialog extends React.Component{
     render(){
         return(
             <SimpleDialog
+                img = {<IntegrationUploadAnimation complete = {!this.uploading}/>}
                 context = {
                     this.uploading? `Uploading data from ${this.props.integrateWith} to your PHIX account...`
                     : 'Complete! ...insert some text about what actually got synced.'
@@ -44,17 +46,35 @@ export default class IntegrationUploadCompleteDialog extends React.Component{
 
 export const IntegrationUploadAnimation = (props) => {
     return(
-        <div className = {styles.uploadAnimation}>
-            <div className = {styles.appBadge}>
-                <Icon img = "ucsf" />
-            </div>
-            <div className = {styles.dataflow}>
-                <Icon img = "logo_data_top" className = {styles.dataTop} />
-                <Icon img = "logo_data_mid" className = {styles.dataMid} />
-                <Icon img = "logo_data_low" className = {styles.dataLow} />
-            </div>
-            <Icon img = "phix_nodata" size = "centerpiece" className = {styles.logo} />
-
-        </div>
+            <FlipMove className = {styles.uploadAnimation} 
+                enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
+                leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
+            >
+            
+                <div className = {styles.appBadge}>
+                    <Icon img = "ucsf" />
+                </div>
+            
+            <FlipMove 
+                key = "logoAnim"
+                className = {styles.logoAnimation}
+                enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
+                leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
+            >
+                {!props.complete &&
+                <div className = {styles.dataflow}>
+                    <Icon img = "logo_data_top" className = {styles.dataTop} />
+                    <Icon img = "logo_data_mid" className = {styles.dataMid} />
+                    <Icon img = "logo_data_low" className = {styles.dataLow} />
+                </div>
+                }
+                <div style = {{zIndex: 2}} key = "logo" >  
+                    <Icon className = {styles.logo} img = "phix_nodata" size = "centerpiece"  /> 
+                </div>
+                <div style = {{position: 'absolute', right: 0}}> 
+                    <Icon className = {[styles.logodata, props.complete? styles.complete: ''].join(' ')} img = "phix_dataonly" size = "centerpiece"  />
+                </div>
+            </FlipMove>
+            </FlipMove>
     )
 }

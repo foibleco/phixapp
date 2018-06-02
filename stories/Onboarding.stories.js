@@ -54,5 +54,6 @@ storiesOf('Onboarding', module)
         return <IntegrationUploadCompleteDialog />
     })
     .add('IntegrationUploadAnimation', ()=>{
-        return <IntegrationUploadAnimation />
+        const complete = boolean('complete', false)
+        return <IntegrationUploadAnimation complete = {complete}/>
     })

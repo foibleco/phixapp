@@ -86,7 +86,7 @@ storiesOf('Components', module).add('Header', ()=>{
         const hasButton = boolean('has button', true)
         return <SimpleDialog
              img = {img? undefined: 'ucsf'}
-             context = {'hi fuck you'}
+             context = 'hello world'
              buttonLabel = {'buttonlabel'}
              hasButton = {hasButton}
              onConfirm = {()=> console.log(' need onConfirm prop ')}
