@@ -79,6 +79,9 @@ export const IntegrationUploadAnimation = (props) => {
                     <Icon className = {styles.logo} img = "phix_nodata" size = "centerpiece"  /> 
                     <div className = {[styles.completionContextBubble, props.complete? styles.show : styles.hide].join(' ')}>
                         <Icon img = {app.logo} />
+                        <div className = {styles.checkBadge}>
+                            <Icon img = "check" size = "small" />
+                        </div>
                     </div>
                 </div>
                 <div style = {{position: 'absolute'}}> 

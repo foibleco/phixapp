@@ -156,3 +156,23 @@ and remove dataflow*/
         border-color: transparent;
         border-top-color: white;
     }
+    .checkBadge{
+        position: absolute;
+        z-index: 4;
+        bottom: -6px;
+        right: -6px;
+        background: #3BD5A7;
+        border-radius: 50%;
+        padding: 8px;
+        box-shadow: var(--basicshadow);
+        transform: scale(0);
+    }
+    .completionContextBubble.show .checkBadge{
+        animation-name: checkBadgeExpand;
+        animation-duration: .225s;
+        animation-fill-mode: forwards;
+        animation-delay: .9s;
+    }
+    @keyframes :local(checkBadgeExpand){
+        0% {transform: scale(0);} 100%{ transform: scale(1); }
+    }
