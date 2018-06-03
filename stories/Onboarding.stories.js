@@ -55,5 +55,9 @@ storiesOf('Onboarding', module)
     })
     .add('IntegrationUploadAnimation', ()=>{
         const complete = boolean('complete', false)
-        return <IntegrationUploadAnimation complete = {complete}/>
+        return <IntegrationUploadAnimation 
+            complete = {complete}
+            integrateWith = "UCSF Medical Center"
+            type = "Care Provider"
+        />
     })

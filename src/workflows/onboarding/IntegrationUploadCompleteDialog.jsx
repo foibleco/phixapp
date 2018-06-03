@@ -1,13 +1,16 @@
 import React from 'react'
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
-// import {find} from 'lodash'
+import {find} from 'lodash'
 import FlipMove from 'react-flip-move'
 
 import styles from './IntegrationUploadCompleteDialog.module.css'
 import Button from '../../components/Button'
 import {Icon} from '../../components/Icon'
 import SimpleDialog from '../../components/SimpleDialog'
+
+
+import mockEntryLists from '../../mockdata/mockEntryLists'
 
 @observer
 export default class IntegrationUploadCompleteDialog extends React.Component{
@@ -29,7 +32,7 @@ export default class IntegrationUploadCompleteDialog extends React.Component{
         return(
             <SimpleDialog
                 selfCentering = {true}
-                img = {<IntegrationUploadAnimation complete = {!this.uploading}/>}
+                img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {!this.uploading}/>}
                 context = {
                     this.uploading? `Uploading data from ${this.props.integrateWith} to your PHIX account...`
                     : 'Complete! ...insert some text about what actually got synced.'
@@ -46,14 +49,15 @@ export default class IntegrationUploadCompleteDialog extends React.Component{
 }
 
 export const IntegrationUploadAnimation = (props) => {
+    const app = find(mockEntryLists[props.type], (o)=> { return o.name === props.integrateWith})
     return(
             <FlipMove className = {styles.uploadAnimation} 
                 enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
-                leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
+                leaveAnimation = {{from: {transform: 'translateX(0px)', opacity: 1}, to: {transform: 'translateX(20px)', opacity: 0}}}
             >
             {!props.complete && 
                 <div className = {styles.appBadge}>
-                    <Icon img = "ucsf" />
+                    <Icon img = {app.logo} />
                 </div>
             }
             <FlipMove 
@@ -73,10 +77,14 @@ export const IntegrationUploadAnimation = (props) => {
                 }
                 <div style = {{zIndex: 2}} key = "logo" >  
                     <Icon className = {styles.logo} img = "phix_nodata" size = "centerpiece"  /> 
+                    <div className = {[styles.completionContextBubble, props.complete? styles.show : styles.hide].join(' ')}>
+                        <Icon img = {app.logo} />
+                    </div>
                 </div>
                 <div style = {{position: 'absolute'}}> 
                     <Icon className = {[styles.logodata, props.complete? styles.complete: ''].join(' ')} img = "phix_dataonly" size = "centerpiece"  />
                 </div>
+                
             </FlipMove>
             </FlipMove>
     )
