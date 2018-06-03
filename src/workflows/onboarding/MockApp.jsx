@@ -6,10 +6,10 @@ import FlipMove from 'react-flip-move'
 import {Icon} from '../../components/Icon'
 import Button from '../../components/Button'
 
-import styles from './MockIntegration.module.css'
+import styles from './MockApp.module.css'
 
 @observer
-export default class MockIntegration extends React.Component{
+export default class MockApp extends React.Component{
     @observable present = false 
     @observable mode = 'splash'
     @action appear = () => {console.log('appear'); this.present=true}
@@ -79,7 +79,7 @@ export default class MockIntegration extends React.Component{
     
 }
 
-MockIntegration.defaultProps = {
+MockApp.defaultProps = {
     app: 'myChart',
     splashToContent: true //sets a timeout for splash to go away to reveal content underneath?
 }

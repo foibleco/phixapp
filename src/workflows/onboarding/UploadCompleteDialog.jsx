@@ -4,7 +4,7 @@ import {observer} from 'mobx-react'
 import {find} from 'lodash'
 import FlipMove from 'react-flip-move'
 
-import styles from './IntegrationUploadCompleteDialog.module.css'
+import styles from './UploadCompleteDialog.module.css'
 import Button from '../../components/Button'
 import {Icon} from '../../components/Icon'
 import SimpleDialog from '../../components/SimpleDialog'
@@ -13,7 +13,7 @@ import SimpleDialog from '../../components/SimpleDialog'
 import mockEntryLists from '../../mockdata/mockEntryLists'
 
 @observer
-export default class IntegrationUploadCompleteDialog extends React.Component{
+export default class UploadCompleteDialog extends React.Component{
     @observable uploading = true
 
     componentDidMount(){

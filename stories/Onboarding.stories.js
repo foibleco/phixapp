@@ -8,9 +8,9 @@ import Onboarding from '../src/workflows/onboarding/Onboarding'
 import PickIntegrationTypes from '../src/workflows/onboarding/PickIntegrationTypes'
 import FindIntegration from '../src/workflows/onboarding/FindIntegration'
 import OpenIntegrationDialog from '../src/workflows/onboarding/OpenIntegrationDialog'
-import MockIntegration from '../src/workflows/onboarding/MockIntegration'
+import MockApp from '../src/workflows/onboarding/MockApp'
 
-import IntegrationUploadCompleteDialog, {IntegrationUploadAnimation} from '../src/workflows/onboarding/IntegrationUploadCompleteDialog'
+import UploadCompleteDialog, {IntegrationUploadAnimation} from '../src/workflows/onboarding/UploadCompleteDialog'
 
 
 addDecorator(withViewport('iphone6'))
@@ -43,15 +43,18 @@ storiesOf('Onboarding', module)
             type = "Care Provider"
          />
     })
-    .add('MockIntegration', ()=>{
+    .add('MockApp', ()=>{
         const display = boolean('display', true)
-        return <MockIntegration
+        return <MockApp
             app = "myChart"
             display = {display}
         />
     })
-    .add('IntegrationUploadCompleteDialog', ()=>{
-        return <IntegrationUploadCompleteDialog />
+    .add('UploadCompleteDialog', ()=>{
+        return <UploadCompleteDialog 
+            integrateWith = "UCSF Medical Center"
+            type = "Care Provider"
+        />
     })
     .add('IntegrationUploadAnimation', ()=>{
         const complete = boolean('complete', false)

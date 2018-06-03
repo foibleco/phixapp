@@ -6,8 +6,8 @@ import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
-import MockIntegration from './MockIntegration'
-import IntegrationUploadCompleteDialog from './IntegrationUploadCompleteDialog'
+import MockApp from './MockApp'
+import UploadCompleteDialog from './UploadCompleteDialog'
 
 const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading']
 
@@ -103,7 +103,7 @@ export default class Onboarding extends React.Component{
                     />
                 }
                 {(store.step === 'outside' || store.step === 'uploading') &&
-                    <MockIntegration
+                    <MockApp
                         app = "myChart"
                         display = {store.step === 'uploading'? false : true}
                         onConfirm = {store.next}
@@ -111,7 +111,7 @@ export default class Onboarding extends React.Component{
                     />
                 }
                 {store.step === 'uploading' && 
-                    <IntegrationUploadCompleteDialog
+                    <UploadCompleteDialog
                         integrateWith = {store.currentIntegration}
                         type = {store.integrations[store.currentIntegrationTypeIndex]}
                         nextType = {
