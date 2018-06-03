@@ -11,8 +11,7 @@ import IntegrationUploadCompleteDialog from './IntegrationUploadCompleteDialog'
 
 const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading']
 
-@observer
-export default class Onboarding extends React.Component{
+class OnboardingStore {
     @observable step = 'pick' //pick, find, login 
     @observable integrations = []
     @observable currentIntegration = null
@@ -66,56 +65,62 @@ export default class Onboarding extends React.Component{
         //TODO: clearing applicable data when user goes back
             //also, some kind of sanity check dialog for certain back operations
     }
+}
 
+const store = new OnboardingStore()
+window.onboarding = store 
+
+@observer
+export default class Onboarding extends React.Component{
     render(){
         return(
             <div className = {styles.onboarding}>
                 <span 
                     style = {{position: 'absolute', zIndex: 30}}
-                    onClick = {this.goBack}
+                    onClick = {store.goBack}
                 > 
                     debug back button 
                 </span>
-                {this.step === 'pick' &&
+                {store.step === 'pick' &&
                     <PickIntegrationTypes 
-                        onComplete = {this.setIntegrations}
+                        onComplete = {store.setIntegrations}
                     />
                 }
-                {(this.step === 'find' || this.step=== 'login') &&
+                {(store.step === 'find' || store.step=== 'login') &&
                     <FindIntegration 
-                        integration = {this.integrations[this.currentIntegrationTypeIndex]} 
-                        onSelect = {this.pickedIntegrationAccount}
-                        mode = {this.step}
-                        onLogin = {this.setCurrentIntegration}
+                        integration = {store.integrations[store.currentIntegrationTypeIndex]} 
+                        onSelect = {store.pickedIntegrationAccount}
+                        mode = {store.step}
+                        onLogin = {store.setCurrentIntegration}
                     />
                 }
-                {(this.step === 'notify' || this.step === 'outside') &&
+                {(store.step === 'notify' || store.step === 'outside') &&
                     <OpenIntegrationDialog
-                        integrateWith = {this.currentIntegration}
-                        type = {this.integrations[this.currentIntegrationTypeIndex]}
-                        onConfirm = {this.next}
+                        integrateWith = {store.currentIntegration}
+                        type = {store.integrations[store.currentIntegrationTypeIndex]}
+                        onConfirm = {store.next}
 
                     />
                 }
-                {(this.step === 'outside' || this.step === 'uploading') &&
+                {(store.step === 'outside' || store.step === 'uploading') &&
                     <MockIntegration
                         app = "myChart"
-                        display = {this.step === 'uploading'? false : true}
-                        onConfirm = {this.next}
-                        onCancel = {this.goBack}
+                        display = {store.step === 'uploading'? false : true}
+                        onConfirm = {store.next}
+                        onCancel = {store.goBack}
                     />
                 }
-                {this.step === 'uploading' && 
+                {store.step === 'uploading' && 
                     <IntegrationUploadCompleteDialog
-                        integrateWith = {this.currentIntegration}
-                        type = {this.integrations[this.currentIntegrationTypeIndex]}
+                        integrateWith = {store.currentIntegration}
+                        type = {store.integrations[store.currentIntegrationTypeIndex]}
                         nextType = {
-                            this.currentIntegrationTypeIndex < this.integrations.length - 1? this.integrations[this.currentIntegrationTypeIndex+1] 
+                            store.currentIntegrationTypeIndex < store.integrations.length - 1? store.integrations[store.currentIntegrationTypeIndex+1] 
                                 : 'none'
                         }
-                        onUploadComplete = {this.syncedIntegrationAccount}
-                        startNextIntegrationType = {this.startNextIntegrationType}
-                        addAnotherIntegrationOfSameType = {this.addAnotherIntegrationOfSameType}
+                        onUploadComplete = {store.syncedIntegrationAccount}
+                        startNextIntegrationType = {store.startNextIntegrationType}
+                        addAnotherIntegrationOfSameType = {store.addAnotherIntegrationOfSameType}
                     />
                 }
 
