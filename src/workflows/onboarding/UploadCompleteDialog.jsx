@@ -34,8 +34,8 @@ export default class UploadCompleteDialog extends React.Component{
                 selfCentering = {true}
                 img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {!this.uploading}/>}
                 context = {
-                    this.uploading? `Uploading data from ${this.props.integrateWith} to your PHIX account...`
-                    : 'Complete! ...insert some text about what actually got synced.'
+                    this.uploading? `Uploading your ${this.props.integrateWith} data to your PHIX account...`
+                    : fakeSyncedDataBlurb[this.props.type]()
                 }
                 buttonLabel = {'Sync '+ this.props.nextType}
                 hasButton = {!this.uploading} //until...
@@ -91,4 +91,16 @@ export const IntegrationUploadAnimation = (props) => {
             </FlipMove>
             </FlipMove>
     )
+}
+
+const fakeSyncedDataBlurb = {
+    //
+    'Care Provider': ()=> {
+        return `Your care provider data has been added and can be viewed in PHIX anytime. We found ${Math.round(Math.random()*7)} years of data, including ${Math.round(Math.random()*36)} visits with ${Math.round(Math.random()*12)} doctors.`
+    },
+    'Health Insurance': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
+    'Pharmacy': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
+    'Genetics': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
+    'Health Savings Account': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
+    'Wearable Devices': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
 }
