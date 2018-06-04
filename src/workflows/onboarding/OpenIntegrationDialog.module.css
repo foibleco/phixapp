@@ -91,3 +91,8 @@
     line-height: 1.5rem;
     margin-bottom: 15px;
 }
+.em{
+    font-size: inherit;
+    color: var(--textpurple);
+    font-weight: 600;
+}

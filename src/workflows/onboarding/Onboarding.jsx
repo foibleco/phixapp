@@ -116,7 +116,7 @@ export default class Onboarding extends React.Component{
                         type = {store.integrations[store.currentIntegrationTypeIndex]}
                         nextType = {
                             store.currentIntegrationTypeIndex < store.integrations.length - 1? store.integrations[store.currentIntegrationTypeIndex+1] 
-                                : 'none'
+                                : ''
                         }
                         onUploadComplete = {store.syncedIntegrationAccount}
                         startNextIntegrationType = {store.startNextIntegrationType}

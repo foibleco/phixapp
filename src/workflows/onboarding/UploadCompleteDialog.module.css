@@ -176,3 +176,25 @@ and remove dataflow*/
     @keyframes :local(checkBadgeExpand){
         0% {transform: scale(0);} 100%{ transform: scale(1); }
     }
+
+.contextBlurbList{
+    margin: 10px 0 0px 0;
+    text-align: left;
+    list-style: none;
+}
+.contextBlurbList .item{
+    font-size: 13px;
+}
+.contextBlurbList .item::before{
+    content: '• ';
+    color: var(--mediumpurple);
+}
+.em{
+    font-size: inherit;
+    color: var(--textpurple);
+    font-weight: 600;
+}
+.viewShareDelete{
+    font-size: 13px;
+
+}

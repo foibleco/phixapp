@@ -34,13 +34,15 @@ export default class UploadCompleteDialog extends React.Component{
                 selfCentering = {true}
                 img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {!this.uploading}/>}
                 context = {
-                    this.uploading? `Uploading your ${this.props.integrateWith} data to your PHIX account...`
-                    : fakeSyncedDataBlurb[this.props.type]()
+                    this.uploading? (
+                        <span>Uploading your <span className = {styles.em}>{this.props.integrateWith}</span> data to your PHIX account...</span>
+                    )
+                    : fakeSyncedDataBlurb[this.props.type](this.props.integrateWith)
                 }
-                buttonLabel = {'Sync '+ this.props.nextType}
+                buttonLabel = {!this.props.nextType? 'Review and finalize my profile!' :'Continue to '+ this.props.nextType}
                 hasButton = {!this.uploading} //until...
                 onButtonClick = {this.props.startNextIntegrationType}
-                subButtonLabel = {this.uploading? 'Cancel' : 'Add another '+this.props.type}
+                subButtonLabel = {this.uploading? 'Cancel' : 'Add another '+this.props.type+'...'}
                 hasSubButton = {true}
                 onSubButtonClick = {this.props.addAnotherIntegrationOfSameType}
             />
@@ -95,12 +97,25 @@ export const IntegrationUploadAnimation = (props) => {
 
 const fakeSyncedDataBlurb = {
     //
-    'Care Provider': ()=> {
-        return `Your care provider data has been added and can be viewed in PHIX anytime. We found ${Math.round(Math.random()*7)} years of data, including ${Math.round(Math.random()*36)} visits with ${Math.round(Math.random()*12)} doctors.`
+    // 'Care Provider': ()=> {
+    //     return `Your care provider data has been added and can be viewed in PHIX anytime. We found ${Math.round(Math.random()*7)} years of data, including ${Math.round(Math.random()*36)} visits with ${Math.round(Math.random()*12)} doctors.`
+    // },
+    'Care Provider': (name)=> {
+        const fam = Math.floor(Math.random()*4)
+        return (
+            <React.Fragment>
+                We've added your <span className = {styles.em}>{name}</span> data to PHIX, including: 
+                <ul className = {styles.contextBlurbList}>
+                    <li className = {styles.item}><span className = {styles.em}>{Math.round(Math.random()*36)+1} care visits </span> from 2011&mdash;2018</li>
+                    <li className = {styles.item}><span className = {styles.em}>{Math.round(Math.random()*12)+1} doctors</span> you've seen</li>
+                    {fam > 0 && <li className = {styles.item}><span className = {styles.em}>{fam+1} family members' </span>patient info</li>}
+                </ul>
+            </React.Fragment>
+        )
     },
-    'Health Insurance': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
-    'Pharmacy': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
-    'Genetics': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
-    'Health Savings Account': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
-    'Wearable Devices': ()=> {return `Your health insurance account and plan information has been added and can now be viewed in PHIX.`},
+    'Health Insurance': (name)=> {return `Success! We've added your ${name} account and plan to PHIX.`},
+    'Pharmacy': (name)=> {return `Great -- we added your records from ${name} to your PHIX account.`},
+    'Genetics': (name)=> {return `Nice! We linked your ${name} data with your PHIX account`},
+    'Health Savings Account': (name)=> {return `We've connected your health savings account with PHIX.`},
+    'Wearable Devices': (name)=> {return `Cool! Your ${name} is now connected with your PHIX account.`},
 }
