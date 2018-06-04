@@ -4,6 +4,7 @@ import {observer} from 'mobx-react'
 
 import styles from './App.module.css'
 
+import './App.css'
 // import Header from './components/Header'
 import Onboarding from './workflows/onboarding/Onboarding'
 
