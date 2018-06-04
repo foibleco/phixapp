@@ -36,7 +36,7 @@ const syncableAccountTypes = [
     },
     {
         title: 'Genetics',
-        examples: ['23AndMe', 'deCODE', 'UnitedHealthcare', 'Aetna'],
+        examples: ['23AndMe', 'deCODE', 'GenebyGene', 'MapMyGenome'],
         icon: 'genetics',
     },
     {

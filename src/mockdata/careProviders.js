@@ -32,12 +32,53 @@ const careProviders = [
 ].concat(doctors)
 
 const insurers = [
-    {name: 'Aetna', type: 'insurer', logo: 'aetna'},
-    {name: 'Anthem BlueCross', type: 'insurer', logo: 'bluecross'},
-    {name: 'Anthem BlueShield', type: 'insurer', logo: 'blueshield' },
-    {name: 'Cigna', type: 'insurer', logo: 'cigna'},
-    {name: 'Kaiser Permanente', type: 'insurer', logo: 'kaiser' },
-    {name: 'UnitedHealthcare', type: 'insurer', logo: 'unitedhealthcare'},
+    {name: 'Aetna', type: 'insurer', logo: 'aetna', portal: 'Aetna Navigator'},
+    {name: 'Anthem BlueCross', type: 'insurer', logo: 'bluecross', portal: 'Anthem.com'},
+    {name: 'Anthem BlueShield', type: 'insurer', logo: 'blueshield', portal: 'Anthem.com' },
+    {name: 'Cigna', type: 'insurer', logo: 'cigna', portal: 'myCigna'},
+    {name: 'Kaiser Permanente', type: 'insurer', logo: 'kaiser'},
+    {name: 'UnitedHealthcare', type: 'insurer', logo: 'unitedhealthcare', portal: 'myuhc.com'},
 ]
 
-export {careProviders, insurers}
+const pharmacies = [
+    {name: 'CVS Caremark', type: 'pharmacy', logo: 'cvs'},
+    {name: 'CVS Pharmacy', type: 'pharmacy', logo: 'cvs'},
+    {name: 'Humana', type: 'pharmacy', logo: 'humana'},
+    {name: 'MyPrime', type: 'pharmacy', logo: 'cvs'},
+    {name: 'Rite Aid', type: 'pharmacy', logo: 'riteaid'},
+    {name: 'Walgreens', type: 'pharmacy', logo: 'walgreens'},
+    {name: 'Walmart Pharmacy', type: 'pharmacy', logo: 'walmart'},
+]
+
+const genetics = [
+    {name: '23 and Me'},
+    {name: 'Acobiom'},
+    {name: 'deCODE'},
+    {name: 'Gene TLC'},
+    {name: 'GenebyGene'},
+    {name: 'Genosearch'},
+    {name: 'Health In Code'},
+    {name: 'Healthnucleus'},
+    {name: 'MapMyGenome'},
+]
+
+const hsas = [
+    {name: 'Further / SelectAccount'},
+    {name: 'Health Equity'},
+    {name: 'Health Savings Administrators'},
+    {name: 'HSA Bank'},
+    {name: 'Lively HSA'},
+    {name: 'Optum Bank HSA'},
+]
+
+const wearables = [
+    {name: 'Apple Watch'},
+    {name: 'Android Wear'},
+    {name: 'Fitbit'},
+    {name: 'Garmin'},
+    {name: 'Huawei'},
+    {name: 'Moto 360'},
+    {name: 'Samsung Gear'},
+
+]
+export {careProviders, insurers, pharmacies, genetics, hsas, wearables}
