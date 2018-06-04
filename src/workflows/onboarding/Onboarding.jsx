@@ -17,10 +17,43 @@ import UploadCompleteDialog from './UploadCompleteDialog'
 const steps = ['pickTypes', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
 const backableSteps = ['find', 'login',]
 const headerSteps = ['pickTypes','find','login',]
-const scrollableSteps = [ ]
+
+function generateTitle(){
+    let title
+    console.log(store.step)
+    if(store.step==='pickTypes') title = 'Link your accounts with PHIX'
+    else if(store.step==='find'){
+        const int = store.integrations[store.currentIntegrationTypeIndex]
+
+        if(int === 'Genetics') title = 'Which genetics service do you use?'
+        else if(int === 'Wearable Devices') title = 'Which wearable do you want to link?'
+        else if(int === 'Pharmacy') title = 'Which pharmacy do you use?'
+        else if(int === 'Health Savings Account') title = 'What HSA are you signed up with?'
+        else if(!store.userIsRepeatingStep){
+            if(int === 'Care Provider') title = 'Who\'s your care provider?'
+            else if(int === 'Health Insurance') title = 'What health insurer do you have?'
+        }
+        else{
+            if(int === 'Care Provider') title = 'Who else is your care provider?'
+            else if(int === 'Health Insurance') title = 'What other insurer covers/covered you?'
+        }
+    }
+    else if(store.step==='login'){
+        const int = store.integrations[store.currentIntegrationTypeIndex]
+        if(int==='Care Provider') title = 'Login to your patient portal'
+        else if(int==='Health Insurance') title = 'Login to your health insurance'
+        else if(int==='Pharmacy') title = 'Login to your pharmacy'
+        else if(int==='Genetics') title = 'Login to your genetics service'
+        else if(int==='Health Savings Account') title = 'Login to your HSA'
+        else if(int==='Wearable Devices') title = 'Login to your wearable account'
+    }
+    console.log(title)
+    return title
+}
 
 class OnboardingStore {
     @observable step = 'pickTypes' //pick, find, login 
+    @observable title = 'Link your accounts with PHIX'
     @observable integrations = []
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0
@@ -74,10 +107,13 @@ class OnboardingStore {
         else this.step = steps[currentStepIndex+1]
 
         this.animationDirection = 'forward'
+        this.title = generateTitle()
+
     }
     @action goBack = (backTo) => {
         if(steps.includes(backTo)){ 
             this.step = backTo
+            this.title = generateTitle()
             return
         }
         else if(this.userIsRepeatingStep && this.step==='find'){
@@ -88,6 +124,8 @@ class OnboardingStore {
         if(currentStepIndex===0) return
         else if(this.step==='notify') this.step = 'find'
         else this.step = steps[currentStepIndex-1]
+
+        this.title = generateTitle()
 
         this.animationDirection = 'back'
         //TODO: clearing applicable data when user goes back
@@ -107,7 +145,7 @@ export default class Onboarding extends React.Component{
         return(
             <div className = {styles.onboarding}>
                 <Header
-                    title = "Hello"
+                    title = {store.title}
                     backButton = {backableSteps.includes(store.step)}
                     onBack = {store.goBack}
                     hide = {!headerSteps.includes(store.step)}

@@ -41,12 +41,12 @@ export default class Header extends React.Component{
             <FlipMove
               className = {[styles.titleWrapper, backButton? styles.leftOffset:''].join(' ')}
               enterAnimation = {{
-                from: {opacity: 0, transform: 'translateX(25%)'},
+                from: {opacity: 0, transform: 'translateX(35%)'},
                 to: {opacity: 1, transform: 'translateX(0)'},
               }}
               leaveAnimation = {{
                 from: {opacity: 1, transform: 'translateX(0)'},
-                to: {opacity: 0, transform: 'translateX(-25%)'},
+                to: {opacity: 0, transform: 'translateX(-65%)'},
               }}
             >
               <div 
