@@ -13,6 +13,10 @@
     justify-content: space-between;
     white-space: nowrap;
     transform: translateX(0px);
+    transition: transform .25s;
+}
+.header.hide{
+    transform: translateY(-100%);
 }
 .title{
     display: flex;

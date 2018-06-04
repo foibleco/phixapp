@@ -24,7 +24,7 @@ export default class Header extends React.Component{
   render(){
       const {backButton, title, step, onBackButtonClick} = this.props
       return(
-        <div className = {styles.header}>
+        <div className = {[styles.header, this.props.hide? styles.hide : ''].join(' ')}>
 
 
           <div className = {[styles.gradientOverflowBound, backButton? styles.wide : ''].join(' ')} />

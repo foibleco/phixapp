@@ -16,13 +16,15 @@ import SimpleDialog from '../src/components/SimpleDialog'
 addDecorator(withViewport('iphone6'))
 addDecorator(withKnobs)
 
-storiesOf('Components', module).add('Header', ()=>{
-    const titles = select('test titles', ['Who\'s your care provider?', 'Select accounts to sync', 'hello world'], 'hello world')
-    const backbutton = boolean('backbutton', false)
-    const search = boolean('search', false)
-    const dotboiga = boolean('dotboiga', false)
-    return <Header title = {titles} backButton = {backbutton} dotburger = {dotboiga} search = {search}/>
-})
+storiesOf('Components', module)
+    .add('Header', ()=>{
+        const titles = select('test titles', ['Who\'s your care provider?', 'Select accounts to sync', 'hello world'], 'hello world')
+        const backbutton = boolean('backbutton', false)
+        const search = boolean('search', false)
+        const dotboiga = boolean('dotboiga', false)
+        const hide = boolean('hide',false)
+        return <Header title = {titles} backButton = {backbutton} dotburger = {dotboiga} search = {search} hide = {hide}/>
+    })
     .add('Button', ()=>{
         return (
             <React.Fragment>
