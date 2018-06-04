@@ -14,13 +14,13 @@ import OpenIntegrationDialog from './OpenIntegrationDialog'
 import MockApp from './MockApp'
 import UploadCompleteDialog from './UploadCompleteDialog'
 
-const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
+const steps = ['pickTypes', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
 const backableSteps = ['find', 'login',]
-const headerSteps = ['pick','find','login',]
+const headerSteps = ['pickTypes','find','login',]
 const scrollableSteps = [ ]
 
 class OnboardingStore {
-    @observable step = 'pick' //pick, find, login 
+    @observable step = 'pickTypes' //pick, find, login 
     @observable integrations = []
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0
@@ -51,6 +51,7 @@ class OnboardingStore {
     @action startNextIntegrationType = () => {
         console.log('user done with syncing', this.integrations[this.currentIntegrationTypeIndex])
         console.log(this.syncedIntegrations)
+        if(this.userIsRepeatingStep) this.userIsRepeatingStep = false
         if(this.currentIntegrationTypeIndex === this.integrations.length-1){
             console.log('no more integrations - call onboarding completion dialog')
             return
@@ -63,7 +64,9 @@ class OnboardingStore {
         console.log('user wants to add another', this.integrations[this.currentIntegrationTypeIndex])
         console.log(this.syncedIntegrations)
         this.goBack('find')
-        this.currentIntegration = null
+        this.userIsRepeatingStep = true
+        // this.currentIntegration = null //cause going back to uploadComplete you should see the
+        // same stuff
     }
     @action next = () => {
         const currentStepIndex = steps.indexOf(this.step)
@@ -75,6 +78,10 @@ class OnboardingStore {
     @action goBack = (backTo) => {
         if(steps.includes(backTo)){ 
             this.step = backTo
+            return
+        }
+        else if(this.userIsRepeatingStep && this.step==='find'){
+            this.step = 'uploadComplete'
             return
         }
         const currentStepIndex = steps.indexOf(this.step)
@@ -120,7 +127,7 @@ export default class Onboarding extends React.Component{
                             : {transform: 'translateY(100%)'}
                     }}
                 >
-                {store.step === 'pick' &&
+                {store.step === 'pickTypes' &&
                     <PickIntegrationTypes 
                         onComplete = {store.setIntegrations}
                     />

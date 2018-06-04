@@ -18,7 +18,12 @@ export default class UploadCompleteDialog extends React.Component{
     @observable timeoutCompletion = null
 
     componentDidMount(){
-        this.timeoutCompletion = setTimeout(this.mockUploadComplete, 5000)
+        console.log(this.props)
+        if(this.props.complete){
+            console.log('mounting in complete mode; user came back from trying to add a 2nd+')
+             this.mockUploadComplete()
+         }
+        else this.timeoutCompletion = setTimeout(this.mockUploadComplete, 3500)
     }
     componentWillUnmount(){
         clearTimeout(this.timeoutCompletion)
