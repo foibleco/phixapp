@@ -48,6 +48,8 @@
     color: var(--mediumpurple);
 }
 
+
+
 .options{
     box-sizing: border-box;
     border-bottom: 1px solid #c4c4c4;
@@ -58,6 +60,15 @@
 
 .entry .icon{
     margin-right: 15px;
+}
+
+.entry .networkNotice{
+    display: flex;
+    align-items: center;
+}
+.entry .networkNotice .text{
+    font-size: 13px;
+    line-height: 1.15rem;
 }
 
 .entry .loginMask{
@@ -156,4 +167,10 @@
         opacity: 1;
         transform: scaleY(1);
     }
+}
+
+.em{
+    font-size: inherit;
+    color: var(--textpurple);
+    font-weight: 600;
 }

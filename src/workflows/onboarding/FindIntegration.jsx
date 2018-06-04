@@ -1,7 +1,9 @@
 import React from 'react'
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
+import {find} from 'lodash'
 
+import scrollToComponent from 'react-scroll-to-component'
 import FlipMove from 'react-flip-move'
 
 import Button, {ButtonGroup} from '../../components/Button'
@@ -28,6 +30,9 @@ export default class FindIntegration extends React.Component{
     @action select = (item) =>{ 
         this.selected = item
         this.props.onSelect()
+        if(window.scrollY > 0){
+            scrollToComponent(this.container, {align: 'top', duration: window.scrollY/1.5})
+        }
     }
     @action filterListByType = (type) => {
         if(!this.readyToAnimate){
@@ -74,13 +79,13 @@ export default class FindIntegration extends React.Component{
                     ].join(' ')}
                     onClick = {()=>{this.select(entry.name)}}
                 >
-                    {(entry.type === 'network' || entry.type === 'insurer') &&
+                    {entry.type !== 'doctor' && entry.type !== 'hospital' &&
                         <React.Fragment> 
                             <Icon img = {entry.logo} size = "large" className = {styles.icon} />
                             {entry.name}
                         </React.Fragment>
                     }
-                    {entry.type === 'hospital' &&
+                    {entry.type === 'hospital' && entry.name !== this.selected &&
                         <React.Fragment>
                             <div className = {styles.title}> {entry.name} </div>
                             <div className = {styles.subtitle}> {entry.address} </div>
@@ -89,7 +94,7 @@ export default class FindIntegration extends React.Component{
                             }
                         </React.Fragment>
                     }
-                    {entry.type === 'doctor' &&
+                    {entry.type === 'doctor' && entry.name !== this.selected &&
                         <React.Fragment>
                             <div className = {styles.title}> {entry.name} </div>
                             {entry.specialty && 
@@ -103,6 +108,12 @@ export default class FindIntegration extends React.Component{
                             }
                         </React.Fragment>
                     }
+                    {(entry.type==='doctor' || entry.type==='hospital') && (entry.name===this.selected) &&
+                        <div className = {styles.networkNotice}>
+                            <Icon img = {find(mockEntryLists[this.props.integration],{name: entry.network}).logo} size = 'large' className = {styles.icon}/>
+                            <span className = {styles.text}>This {entry.type} is a part of <span className = {styles.em}>{entry.network}</span> -- log in to their portal to sync your data.</span> 
+                        </div>
+                    }
 
                 {entry.name===this.selected && 
                     <div className = {styles.loginMask} />
@@ -112,7 +123,10 @@ export default class FindIntegration extends React.Component{
         })
 
         return (
-            <div className = {styles.findIntegration}>
+            <div
+                ref = {(div)=> { this.container = div }} 
+                className = {styles.findIntegration}
+            >
 
                     <div className = {[styles.filters, this.selected || this.props.integration!=='Care Provider'? styles.hidden : ''].join(' ')}>
                         <ButtonGroup
