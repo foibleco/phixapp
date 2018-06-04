@@ -28,6 +28,7 @@ export const iconlist = {
     dotburger: require('./assets/dotboiga.svg'),
 
     aetna: require('./assets/companies/aetna.svg'),
+    alameda: require('./assets/companies/alameda.svg'),
     bluecross: require('./assets/companies/bluecross.svg'),
     blueshield: require('./assets/companies/blueshield.svg'),
     cigna: require('./assets/companies/cigna.svg'),
@@ -38,6 +39,19 @@ export const iconlist = {
     onemedical: require('./assets/companies/onemedical.svg'),
     sutter: require('./assets/companies/sutter.svg'),
     ucsf: require('./assets/companies/ucsf.svg'),
+
+    aetna_original: require('./assets/companies/aetna_original.svg'),
+    alameda_original: require('./assets/companies/alameda_original.svg'),
+    bluecross_original: require('./assets/companies/bluecross_original.svg'),
+    blueshield_original: require('./assets/companies/blueshield_original.svg'),
+    cigna_original: require('./assets/companies/cigna_original.svg'),
+    unitedhealthcare_original: require('./assets/companies/unitedhealthcare_original.svg'),
+    stanford_original: require('./assets/companies/stanford_original.svg'),
+    kaiser_original: require('./assets/companies/kaiser_original.svg'),
+    dignityhealth_original: require('./assets/companies/dignityhealth_original.svg'),
+    onemedical_original: require('./assets/companies/onemedical_original.svg'),
+    sutter_original: require('./assets/companies/sutter_original.svg'),
+    ucsf_original: require('./assets/companies/ucsf_original.svg'),
 
     myChart: require('./assets/companies/mychart.png'),
 }

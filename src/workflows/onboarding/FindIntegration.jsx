@@ -81,7 +81,7 @@ export default class FindIntegration extends React.Component{
                 >
                     {entry.type !== 'doctor' && entry.type !== 'hospital' &&
                         <React.Fragment> 
-                            <Icon img = {entry.logo} size = "large" className = {styles.icon} />
+                            <Icon img = {entry.logo+'_original'} size = "large" className = {styles.icon} />
                             {entry.name}
                         </React.Fragment>
                     }
@@ -110,7 +110,7 @@ export default class FindIntegration extends React.Component{
                     }
                     {(entry.type==='doctor' || entry.type==='hospital') && (entry.name===this.selected) &&
                         <div className = {styles.networkNotice}>
-                            <Icon img = {find(mockEntryLists[this.props.integration],{name: entry.network}).logo} size = 'large' className = {styles.icon}/>
+                            <Icon img = {find(mockEntryLists[this.props.integration],{name: entry.network}).logo+'_original'} size = 'large' className = {styles.icon}/>
                             <span className = {styles.text}>This {entry.type} is a part of <span className = {styles.em}>{entry.network}</span> -- log in to their portal to sync your data.</span> 
                         </div>
                     }

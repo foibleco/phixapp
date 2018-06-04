@@ -5,6 +5,7 @@ doctors = sortBy(doctors, 'name')
 
 const careProviders = [
     //networks have icon
+    {name: 'Alameda Health System', type: 'network', logo: 'alameda', portal: 'Lawson Portal'},
     {name: 'Dignity Health', type: 'network', logo: 'dignityhealth', portal: 'My Care - Dignity Health'},
     {name: 'Kaiser Permanente', type: 'network', logo: 'kaiser' },
     {name: 'One Medical Group', type: 'network', logo: 'onemedical', portal: 'One Medical'},

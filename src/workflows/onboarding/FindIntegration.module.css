@@ -25,7 +25,7 @@
     padding: 10px 20px;
     background: white;
     /*width: 125vw;*/
-    color: var(--mediumpurple);
+    color: var(--textpurple);
 }
 .entry.hospital, .entry.doctor{
     padding: 15px 25px;

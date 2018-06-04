@@ -59,7 +59,7 @@ export const IntegrationUploadAnimation = (props) => {
             >
             {!props.complete && 
                 <div className = {styles.appBadge}>
-                    <Icon img = {app.logo} />
+                    <Icon img = {app.logo+'_original'} />
                 </div>
             }
             <FlipMove 

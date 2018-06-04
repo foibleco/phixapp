@@ -21,7 +21,7 @@ export default class OpenIntegrationDialog extends React.Component{
                 img = {(
                     <React.Fragment>
                         <div className = {styles.appBadge}>
-                           <Icon img = {app.logo} size = "large" />
+                           <Icon img = {app.logo+'_original'} size = "large" />
                         </div>
                         <div className = {styles.speechbubble}>
                             <Icon className = {styles.largerLogo} img = 'phix' />
