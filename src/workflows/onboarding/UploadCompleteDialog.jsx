@@ -39,10 +39,10 @@ export default class UploadCompleteDialog extends React.Component{
                     )
                     : fakeSyncedDataBlurb[this.props.type](this.props.integrateWith)
                 }
-                buttonLabel = {!this.props.nextType? 'Review and finalize my profile!' :'Continue to '+ this.props.nextType}
+                buttonLabel = {!this.props.nextType? 'Review and finalize my profile' :'Continue to '+ this.props.nextType}
                 hasButton = {!this.uploading} //until...
                 onButtonClick = {this.props.startNextIntegrationType}
-                subButtonLabel = {this.uploading? 'Cancel' : 'Add another '+this.props.type+'...'}
+                subButtonLabel = {this.uploading? 'Cancel' : 'Add another '+this.props.type}
                 hasSubButton = {true}
                 onSubButtonClick = {this.props.addAnotherIntegrationOfSameType}
             />
@@ -104,7 +104,7 @@ const fakeSyncedDataBlurb = {
         const fam = Math.floor(Math.random()*4)
         return (
             <React.Fragment>
-                We've added your <span className = {styles.em}>{name}</span> data to PHIX, including: 
+                We added your <span className = {styles.em}>{name}</span> data to PHIX, including... 
                 <ul className = {styles.contextBlurbList}>
                     <li className = {styles.item}><span className = {styles.em}>{Math.round(Math.random()*36)+1} care visits </span> from 2011&mdash;2018</li>
                     <li className = {styles.item}><span className = {styles.em}>{Math.round(Math.random()*12)+1} doctors</span> you've seen</li>
