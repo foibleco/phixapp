@@ -9,7 +9,7 @@
     "mobx-react": "^5.1.2",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
-    "react-flip-move": "^2.10.2",
+    "react-flip-move": "^3.0.1",
     "react-scroll-to-component": "^1.0.2",
     "react-svg": "^4.0.13",
     "zipcodes": "^6.0.0"

@@ -17,31 +17,37 @@ export default class SimpleDialog extends React.Component{
     componentDidMount(){
         if(this.props.selfCentering){
             this.setHeight(findDOMNode(this.container).getBoundingClientRect().height)
+            // console.log((window.innerHeight / 2) - (this.height / 2))
         }
     }
 
     componentDidUpdate(){
         if(this.props.selfCentering){
             this.setHeight(findDOMNode(this.container).getBoundingClientRect().height)
+            console.log((window.innerHeight / 2) - (this.height / 2))
         }
     }
 
     @action setHeight = (ht) => this.height = ht
 
     render(){
+
+        const goToHeight = (window.innerHeight / 2) - (this.height / 2)
+
     return(
         <div 
             ref = {this.props.selfCentering? (container) => this.container = container : ''}
             className = {[styles.dialog, !this.props.selfCentering? styles.centered : styles.selfCentering].join(' ')}
-            style = {{
-                transform: this.props.selfCentering? `translateY(${(window.innerHeight / 2) - (this.height / 2)}px)` : ''
-            }}
+
 
         >
             <FlipMove
                 className = {styles.flipMoveContainer}
                 enterAnimation = {{from: {opacity: 0}, to: {opacity: 1}}}
                 leaveAnimation = {{from: {opacity: 1}, to: {opacity: 0}}}
+                style = {{
+                    transform: this.props.selfCentering? `translateY(${goToHeight}px)`: ''
+                }}
             >
                 {this.props.img &&
                     <div className = {styles.image} >

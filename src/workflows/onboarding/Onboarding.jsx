@@ -2,6 +2,8 @@ import React from 'react'
 import {observable, action} from 'mobx'
 import {observer} from 'mobx-react'
 
+import FlipMove from 'react-flip-move'
+
 import styles from './Onboarding.module.css'
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
@@ -17,6 +19,9 @@ class OnboardingStore {
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0
     @observable syncedIntegrations = []
+
+    @observable animationDirection = 'forward'
+
     @action setIntegrations = (integrations) =>{ 
         console.log('user set',integrations.length,'integrations:',integrations.join(', '))
         this.integrations = integrations
@@ -44,24 +49,32 @@ class OnboardingStore {
         }
         this.currentIntegrationTypeIndex ++
         this.currentIntegration = null
-        this.step = 'find'
+        this.goBack('find')
     }
     @action addAnotherIntegrationOfSameType = () => {
         console.log('user wants to add another', this.integrations[this.currentIntegrationTypeIndex])
         console.log(this.syncedIntegrations)
-        this.step = 'find'
+        this.goBack('find')
         this.currentIntegration = null
     }
     @action next = () => {
         const currentStepIndex = steps.indexOf(this.step)
         if(currentStepIndex===steps.length-1) return
         else this.step = steps[currentStepIndex+1]
+
+        this.animationDirection = 'forward'
     }
-    @action goBack = () => {
+    @action goBack = (backTo) => {
+        if(steps.includes(backTo)){ 
+            this.step = backTo
+            return
+        }
         const currentStepIndex = steps.indexOf(this.step)
         if(currentStepIndex===0) return
         else if(this.step==='notify') this.step = 'find'
         else this.step = steps[currentStepIndex-1]
+
+        this.animationDirection = 'back'
         //TODO: clearing applicable data when user goes back
             //also, some kind of sanity check dialog for certain back operations
     }
@@ -73,6 +86,9 @@ window.onboarding = store
 @observer
 export default class Onboarding extends React.Component{
     render(){
+        const fwd = store.animationDirection === 'forward'
+        const enterUp = store.step === 'outside'
+        const exitDown = store.step === 'uploading'
         return(
             <div className = {styles.onboarding}>
                 <span 
@@ -81,6 +97,20 @@ export default class Onboarding extends React.Component{
                 > 
                     debug back button 
                 </span>
+                <FlipMove 
+                    className = {styles.flipmoveContainer}
+                    duration = {(enterUp || exitDown)? 600 : 400}
+                    enterAnimation = {{
+                        from: !enterUp? {transform: `translateX(${fwd? 100 : -100}px)`, opacity: 0}:
+                            {transform: 'translateY(100%)', opacity: 1} ,
+                        to: {transform: 'translate(0,0)', opacity: 1}
+                    }}
+                    leaveAnimation = {{
+                        from: {transform: 'translate(0px, 0px)', opacity: 1},
+                        to: !exitDown? {transform: `translateX(${fwd? -100 : 100}px)`, opacity: 0}
+                            : {transform: 'translateY(100%)'}
+                    }}
+                >
                 {store.step === 'pick' &&
                     <PickIntegrationTypes 
                         onComplete = {store.setIntegrations}
@@ -103,7 +133,7 @@ export default class Onboarding extends React.Component{
 
                     />
                 }
-                {(store.step === 'outside' || store.step === 'uploading') &&
+                {(store.step === 'outside') &&
                     <MockApp
                         app = "myChart"
                         display = {store.step === 'uploading'? false : true}
@@ -124,6 +154,7 @@ export default class Onboarding extends React.Component{
                         addAnotherIntegrationOfSameType = {store.addAnotherIntegrationOfSameType}
                     />
                 }
+                </FlipMove>
 
 
             </div>
