@@ -20,7 +20,7 @@ import mockEntryLists from '../../mockdata/mockEntryLists'
 
 @observer
 export default class FindIntegration extends React.Component{
-      @observable selected = null //the name of item user selects from list
+    @observable selected = null //the name of item user selects from list
        @action unselect = () => this.selected = null //for back operations?
     @observable filteringBy = 'network' //only applicable to care provider i think
     //list animation stuff
@@ -57,7 +57,10 @@ export default class FindIntegration extends React.Component{
 
         const {filteringBy} = this
 
-        console.log(mockEntryLists[this.props.integration])
+        // console.log(mockEntryLists[this.props.integration])
+        const alreadySyncedIntegrations = this.props.alreadySynced.map((int)=>{
+            return int.name
+        })
 
         const computedEntryList =  mockEntryLists[this.props.integration]
             .filter((entry)=>{
@@ -69,20 +72,31 @@ export default class FindIntegration extends React.Component{
             })
             .map((entry)=>{
             //filter?
+            let alreadySynced = false
+            if(alreadySyncedIntegrations.includes(entry.name)) alreadySynced = true
+            if(entry.type==='doctor' || entry.type==='hospital'){
+                if(alreadySyncedIntegrations.includes(entry.network)) alreadySynced = true
+            }
             return(
                 <div 
                     overridekey = {entry.name}
                     className = {[
                         styles.entry, 
                         styles[entry.type],
-                        entry.name===this.selected? styles.selected : ''
+                        entry.name===this.selected? styles.selected : '',
+                        alreadySynced? styles.alreadySynced : ''
                     ].join(' ')}
-                    onClick = {()=>{this.select(entry.name)}}
+                    onClick = {!alreadySynced? ()=>{this.select(entry.name)} : ()=>{}}
                 >
                     {entry.type !== 'doctor' && entry.type !== 'hospital' &&
                         <React.Fragment> 
-                            <Icon img = {entry.logo+'_original'} size = "large" className = {styles.icon} />
-                            {entry.name}
+                            <Icon img = {!alreadySynced? entry.logo+'_original' : entry.logo} size = "large" className = {styles.icon} />
+                            {entry.name} 
+                            {alreadySynced && 
+                                <div className = {styles.alreadySyncedCheck}> 
+                                    <Icon img = "check" className = {styles.check} />
+                                </div>
+                            }
                         </React.Fragment>
                     }
                     {entry.type === 'hospital' && entry.name !== this.selected &&

@@ -33,6 +33,22 @@
 .entry.selected{
     background: var(--offwhite);
 }
+.entry.alreadySynced{
+    background: transparent;
+    color: var(--mediumpurple);
+}
+.alreadySyncedCheck{
+    position: absolute;
+    background: var(--checkgreen);
+    padding: 5px;
+    left: 50px;
+    top: 31px;
+    border-radius: 50%;
+}
+.alreadySyncedCheck .check{
+    width: .8rem;
+    height: .8rem;
+}
 
 .entry .title{
     color: var(--textpurple);

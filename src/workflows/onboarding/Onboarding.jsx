@@ -92,6 +92,7 @@ export default class Onboarding extends React.Component{
                         onSelect = {store.pickedIntegrationAccount}
                         mode = {store.step}
                         onLogin = {store.setCurrentIntegration}
+                        alreadySynced = {store.syncedIntegrations}
                     />
                 }
                 {(store.step === 'notify' || store.step === 'outside') &&

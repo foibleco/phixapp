@@ -50,9 +50,9 @@ export default class SimpleDialog extends React.Component{
                     </div>
                 }
                 {this.props.context &&
-                    <p className = {styles.context} >
+                    <div className = {styles.context} >
                         {this.props.context}
-                    </p>
+                    </div>
                 }
                 {this.props.hasButton &&
                     <div>
