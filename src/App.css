@@ -4,10 +4,15 @@ html{
     touch-action: manipulation;
     overflow-x: hidden;
     position: relative;
-
+    /*overflow: scroll;*/
     user-select: none;
         /*this should disable accidental text selection in mobile browsers etc.*/
 }
+::-webkit-scrollbar{
+    width: 0px;
+    background: transparent;
+}
+
 body{
     margin: 0;
 }

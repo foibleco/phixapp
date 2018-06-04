@@ -14,37 +14,42 @@ import mockEntryLists from '../../mockdata/mockEntryLists'
 
 @observer
 export default class UploadCompleteDialog extends React.Component{
-    @observable uploading = true
+    // @observable uploading = true
+    @observable timeoutCompletion = null
 
     componentDidMount(){
-        setTimeout(this.mockUploadComplete, 5000)
+        this.timeoutCompletion = setTimeout(this.mockUploadComplete, 5000)
+    }
+    componentWillUnmount(){
+        clearTimeout(this.timeoutCompletion)
     }
 
     @action mockUploadComplete = () => {
         console.log('mock upload complete')
-        this.uploading = false      
+        // this.uploading = false      
         this.props.onUploadComplete({
             //this is where real data would get passed up
         })
     }
 
     render(){
+        const {complete} = this.props
         return(
             <SimpleDialog
                 selfCentering = {true}
-                img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {!this.uploading}/>}
+                img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {complete}/>}
                 context = {
-                    this.uploading? (
+                    !complete? (
                         <span>Uploading your <span className = {styles.em}>{this.props.integrateWith}</span> data to your PHIX account...</span>
                     )
                     : fakeSyncedDataBlurb[this.props.type](this.props.integrateWith)
                 }
                 buttonLabel = {!this.props.nextType? 'Review and finalize my profile' :'Continue to '+ this.props.nextType}
-                hasButton = {!this.uploading} //until...
+                hasButton = {complete}
                 onButtonClick = {this.props.startNextIntegrationType}
-                subButtonLabel = {this.uploading? 'Cancel' : 'Add another '+this.props.type}
+                subButtonLabel = {!complete? 'Cancel' : 'Add another '+this.props.type}
                 hasSubButton = {true}
-                onSubButtonClick = {this.props.addAnotherIntegrationOfSameType}
+                onSubButtonClick = {!complete? this.props.onCancelUpload : this.props.addAnotherIntegrationOfSameType}
             />
         )
     }

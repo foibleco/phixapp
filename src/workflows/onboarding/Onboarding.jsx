@@ -5,13 +5,19 @@ import {observer} from 'mobx-react'
 import FlipMove from 'react-flip-move'
 
 import styles from './Onboarding.module.css'
+
+import Header from '../../components/Header'
+
 import PickIntegrationTypes from './PickIntegrationTypes'
 import FindIntegration from './FindIntegration'
 import OpenIntegrationDialog from './OpenIntegrationDialog'
 import MockApp from './MockApp'
 import UploadCompleteDialog from './UploadCompleteDialog'
 
-const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading']
+const steps = ['pick', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
+const backableSteps = ['find', 'login',]
+const headerSteps = ['pick','find','login',]
+const scrollableSteps = [ ]
 
 class OnboardingStore {
     @observable step = 'pick' //pick, find, login 
@@ -19,6 +25,7 @@ class OnboardingStore {
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0
     @observable syncedIntegrations = []
+    @observable userIsRepeatingStep = false //flag so we can avoid weird "goback" behavior
 
     @observable animationDirection = 'forward'
 
@@ -39,6 +46,7 @@ class OnboardingStore {
             name: this.currentIntegration,
             data: 'foo'
         })
+        this.next()
     }
     @action startNextIntegrationType = () => {
         console.log('user done with syncing', this.integrations[this.currentIntegrationTypeIndex])
@@ -91,14 +99,15 @@ export default class Onboarding extends React.Component{
         const exitDown = store.step === 'uploading'
         return(
             <div className = {styles.onboarding}>
-                <span 
-                    style = {{position: 'absolute', zIndex: 30}}
-                    onClick = {store.goBack}
-                > 
-                    debug back button 
-                </span>
+                <Header
+                    title = "Hello"
+                    backButton = {backableSteps.includes(store.step)}
+                    onBack = {store.goBack}
+                    hide = {!headerSteps.includes(store.step)}
+                    search = {store.step==='find'}
+                />
                 <FlipMove 
-                    className = {styles.flipmoveContainer}
+                    className = {[styles.flipmoveContainer, !headerSteps.includes(store.step)? styles.noHeader : ''].join(' ')}
                     duration = {(enterUp || exitDown)? 600 : 400}
                     enterAnimation = {{
                         from: !enterUp? {transform: `translateX(${fwd? 100 : -100}px)`, opacity: 0}:
@@ -141,7 +150,7 @@ export default class Onboarding extends React.Component{
                         onCancel = {store.goBack}
                     />
                 }
-                {store.step === 'uploading' && 
+                {(store.step === 'uploading' || store.step === 'uploadComplete') && 
                     <UploadCompleteDialog
                         integrateWith = {store.currentIntegration}
                         type = {store.integrations[store.currentIntegrationTypeIndex]}
@@ -149,9 +158,12 @@ export default class Onboarding extends React.Component{
                             store.currentIntegrationTypeIndex < store.integrations.length - 1? store.integrations[store.currentIntegrationTypeIndex+1] 
                                 : ''
                         }
+                        onCancelUpload = {()=>{store.goBack('find')}}
+                        complete = {store.step==='uploadComplete'}
                         onUploadComplete = {store.syncedIntegrationAccount}
                         startNextIntegrationType = {store.startNextIntegrationType}
                         addAnotherIntegrationOfSameType = {store.addAnotherIntegrationOfSameType}
+                        
                     />
                 }
                 </FlipMove>
