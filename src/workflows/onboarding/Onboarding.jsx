@@ -16,7 +16,7 @@ import UploadCompleteDialog from './UploadCompleteDialog'
 
 const steps = ['pickTypes', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
 const backableSteps = ['find', 'login',]
-const headerSteps = ['pickTypes','find','login',]
+const headerSteps = ['find','login',]
 
 function generateTitle(){
     let title
@@ -59,6 +59,9 @@ class OnboardingStore {
     @observable currentIntegrationTypeIndex = 0
     @observable syncedIntegrations = []
     @observable userIsRepeatingStep = false //flag so we can avoid weird "goback" behavior
+
+    @observable searchstring = null //only mutable and useful in step 'find'
+        @action setSearchString = (e) => this.searchstring = e.target.value
 
     @observable animationDirection = 'forward'
 
@@ -150,6 +153,7 @@ export default class Onboarding extends React.Component{
                     onBack = {store.goBack}
                     hide = {!headerSteps.includes(store.step)}
                     search = {store.step==='find'}
+                    onSearch = {store.setSearchString}
                 />
                 <FlipMove 
                     className = {[styles.flipmoveContainer, !headerSteps.includes(store.step)? styles.noHeader : ''].join(' ')}
@@ -177,6 +181,7 @@ export default class Onboarding extends React.Component{
                         mode = {store.step}
                         onLogin = {store.setCurrentIntegration}
                         alreadySynced = {store.syncedIntegrations}
+                        searchstring = {store.searchstring}
                     />
                 }
                 {(store.step === 'notify' || store.step === 'outside') &&

@@ -60,6 +60,7 @@ export default class Header extends React.Component{
                     <input 
                       className = {styles.searchInput}
                       placeholder = {this.props.searchPlaceholder}
+                      onChange = {this.props.onSearch? this.props.onSearch : (e)=>{console.log('search for ', e.target.value)}}
                     />
                     {/*
                     <div className = {styles.cancelSearch}>
