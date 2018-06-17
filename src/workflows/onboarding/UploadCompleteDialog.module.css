@@ -22,7 +22,7 @@
     border-radius: 8px;
     border: 1px solid var(--lightpurple);
     box-shadow: var(--basicshadow);
-    background: #fbfbfc;
+    background: var(--offwhite);
     z-index: 2;
 }
 

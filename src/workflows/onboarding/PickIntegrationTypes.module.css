@@ -4,7 +4,8 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: calc(100% + 55px);
+    height: calc(100%);
+    /*height: calc(100% + 55px);*/
     width: 100%;
 }
 
@@ -31,9 +32,10 @@
 }
 
 .accountTypeList{
-    margin-top: .75rem;
+    margin-top: 0;
+    /*margin-top: .75rem;*/
     padding: 0 1rem;
-    /*background: #f3f3f5;*/
+    /*background: var(--void);*/
     /*border: 1px solid red;*/
 }
 .itemWrapper{
@@ -50,7 +52,7 @@
 
     /*border: 1px solid black;*/
     border: 1px solid #d7d7d7;
-    background: #fbfbfc;
+    background: var(--offwhite);
 
     border-radius: 8px;
 
@@ -67,7 +69,7 @@
 .accountTypeItem.passive{
 
     /*background: var(--faintpurple);*/
-    background: #f3f3f5;
+    background: var(--void);
     border-color: var(--faintpurple);
     /*box-shadow: 0 0 3px 0 rgba(0,0,0,0);*/
 }
@@ -127,7 +129,7 @@
     bottom: 0;
     /*height: 200px;*/
     width: 100%;
-    background: #fbfbfc;
+    background: var(--offwhite);
     box-shadow: 0 -1px 4px 0 rgba(0,0,0,0.15);
     border: 1px solid #d7d7d7;
     border-radius: 12px 12px 0 0;

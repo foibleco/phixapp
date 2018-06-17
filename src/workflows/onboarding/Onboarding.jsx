@@ -16,12 +16,13 @@ import UploadCompleteDialog from './UploadCompleteDialog'
 
 const steps = ['pickTypes', 'find', 'login', 'notify', 'outside', 'uploading','uploadComplete']
 const backableSteps = ['find', 'login',]
-const headerSteps = ['find','login',]
+const headerSteps = ['pickTypes','find','login',]
 
 function generateTitle(){
     let title
     console.log(store.step)
-    if(store.step==='find'){
+    if(store.step==='pickTypes') title = 'Link your accounts with PHIX'
+    else if(store.step==='find'){
         const int = store.integrations[store.currentIntegrationTypeIndex]
 
         if(int === 'Genetics') title = 'Which genetics service do you use?'
@@ -52,7 +53,7 @@ function generateTitle(){
 
 class OnboardingStore {
     @observable step = 'pickTypes' //pick, find, login 
-    @observable title = ''
+    @observable title = 'Link your accounts with PHIX'
     @observable integrations = []
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0
@@ -149,10 +150,11 @@ export default class Onboarding extends React.Component{
                 <Header
                     title = {store.title}
                     backButton = {backableSteps.includes(store.step)}
-                    onBack = {store.goBack}
+                    onBack = {backableSteps.includes(store.step)? store.goBack : ''}
                     hide = {!headerSteps.includes(store.step)}
                     search = {store.step==='find'}
                     onSearch = {store.setSearchString}
+                    theme = "discreet"
                 />
                 <FlipMove 
                     className = {[styles.flipmoveContainer, !headerSteps.includes(store.step)? styles.noHeader : ''].join(' ')}

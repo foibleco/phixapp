@@ -24,7 +24,7 @@ export default class Header extends React.Component{
   render(){
       const {backButton, title, step} = this.props
       return(
-        <div className = {[styles.header, this.props.hide? styles.hide : ''].join(' ')}>
+        <div className = {[styles.header, this.props.hide? styles.hide : '', styles[this.props.theme]].join(' ')}>
 
 
           <div className = {[styles.gradientOverflowBound, backButton? styles.wide : ''].join(' ')} />
@@ -98,5 +98,6 @@ export default class Header extends React.Component{
 }
 
 Header.defaultProps = {
-  searchPlaceholder: 'Hello I need a placeholder.'
+  searchPlaceholder: 'Hello I need a placeholder.',
+  theme: 'default' // discreet
 }
