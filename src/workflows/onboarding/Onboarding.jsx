@@ -21,8 +21,7 @@ const headerSteps = ['find','login',]
 function generateTitle(){
     let title
     console.log(store.step)
-    if(store.step==='pickTypes') title = 'Link your accounts with PHIX'
-    else if(store.step==='find'){
+    if(store.step==='find'){
         const int = store.integrations[store.currentIntegrationTypeIndex]
 
         if(int === 'Genetics') title = 'Which genetics service do you use?'
@@ -53,7 +52,7 @@ function generateTitle(){
 
 class OnboardingStore {
     @observable step = 'pickTypes' //pick, find, login 
-    @observable title = 'Link your accounts with PHIX'
+    @observable title = ''
     @observable integrations = []
     @observable currentIntegration = null
     @observable currentIntegrationTypeIndex = 0

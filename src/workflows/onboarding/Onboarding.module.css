@@ -9,7 +9,7 @@
     width: 100%;
     height: calc(100% - 55px);
     display: flex;
-    transition: transform .25s;
+    transition: transform .35s;
 }
 
 .flipmoveContainer.noHeader{

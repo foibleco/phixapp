@@ -103,6 +103,7 @@ export default class PickIntegrationTypes extends React.Component{
 
         return(
             <div className = {styles.pickIntegrationTypes}>
+                <h1 className = {styles.header}> Link your accounts with PHIX </h1>
                 <List
                     className = {styles.accountTypeList}
                     optionClass = {styles.itemWrapper}
