@@ -44,7 +44,7 @@ const pharmacies = [
     {name: 'CVS Caremark', type: 'pharmacy', logo: 'cvs'},
     {name: 'CVS Pharmacy', type: 'pharmacy', logo: 'cvs'},
     {name: 'Humana', type: 'pharmacy', logo: 'humana'},
-    {name: 'MyPrime', type: 'pharmacy', logo: 'cvs'},
+    {name: 'Prime', portal: 'MyPrime', type: 'pharmacy', logo: 'prime'},
     {name: 'Rite Aid', type: 'pharmacy', logo: 'riteaid'},
     {name: 'Walgreens', type: 'pharmacy', logo: 'walgreens'},
     {name: 'Walmart Pharmacy', type: 'pharmacy', logo: 'walmart'},

@@ -39,6 +39,12 @@ export const iconlist = {
     onemedical: require('./assets/companies/onemedical.svg'),
     sutter: require('./assets/companies/sutter.svg'),
     ucsf: require('./assets/companies/ucsf.svg'),
+    cvs: require('./assets/companies/cvs.svg'),
+    humana: require('./assets/companies/humana.svg'),
+    prime: require('./assets/companies/prime.svg'),
+    riteaid: require('./assets/companies/riteaid.svg'),
+    walgreens: require('./assets/companies/walgreens.svg'),
+    walmart: require('./assets/companies/walmart.svg'),
 
     aetna_original: require('./assets/companies/aetna_original.svg'),
     alameda_original: require('./assets/companies/alameda_original.svg'),
@@ -52,6 +58,12 @@ export const iconlist = {
     onemedical_original: require('./assets/companies/onemedical_original.svg'),
     sutter_original: require('./assets/companies/sutter_original.svg'),
     ucsf_original: require('./assets/companies/ucsf_original.svg'),
+    cvs_original: require('./assets/companies/cvs_original.svg'),
+    humana_original: require('./assets/companies/humana_original.svg'),
+    prime_original: require('./assets/companies/prime_original.svg'),
+    riteaid_original: require('./assets/companies/riteaid_original.svg'),
+    walgreens_original: require('./assets/companies/walgreens_original.svg'),
+    walmart_original: require('./assets/companies/walmart_original.svg'),
 
     myChart: require('./assets/companies/mychart.png'),
 }
