@@ -193,10 +193,12 @@ class ZipCheck extends React.Component{
                     onChange = {(e)=>{this.modifyZIP(e.target.value)}}
                     value = {this.zipCode}
                 />
-
-                <div className = {styles.cityStatePopover}>
-
+                {/*
+                <div className = {[styles.cityStatePopover, locationReady? styles.visible:''].join(' ')}>
+                    <Icon img = "locationpin" size = "small" className = {styles.icon}/>
+                    {locationReady && `${this.computedLocation.city}, ${this.computedLocation.state}`}
                 </div>
+                */}
 
                 <FlipMove
                     typeName = {null}
@@ -223,9 +225,7 @@ class ZipCheck extends React.Component{
                                 <Button label = "Continue" className = {styles.contbtn}
                                     onClick = {this.props.onComplete}
                                 />
-                                {/* <Icon img = "locationpin" size = "small" className = {styles.icon}/>
-                                {`${this.computedLocation.city}, ${this.computedLocation.state}`}
-                                */}
+                                
                             </div>
                         ) : ( 
                             <div 

@@ -166,6 +166,16 @@
         font-weight: 600;
 
     }
+    .cityStatePopover{
+        position: absolute;
+        padding: 15px;
+        background: white;
+        border: 1px solid var(--mediumpurple);
+        box-shadow: var(--basicshadow); 
+    }
+    .cityStatePopover.visible{
+        /*opacity: ;*/
+    }
     .zipInput{
         border-radius: 8px;
         padding: .7rem;
