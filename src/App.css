@@ -19,7 +19,8 @@ body{
 
 *{
     backface-visibility: hidden;
-        /*position: relative;*/
+    transform-style: preserve-3d;
+;        /*position: relative;*/
     box-sizing: border-box;
     font-size: 16px;
     font-family: 'Work Sans', sans-serif;
