@@ -8,7 +8,12 @@
     align-items: center;
     justify-content: center;
     box-shadow: var(--basicshadow);
+    transition: background .4s;
 }
+    .button.disabled{
+        color: var(--subactionpurple);
+        background: var(--void);
+    }
 
 .circleButton{
     background: var(--actionpurple);

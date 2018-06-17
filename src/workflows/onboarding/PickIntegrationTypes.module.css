@@ -114,6 +114,8 @@
 }
 
 .startBatchSyncButton{
+    display: flex;
+    align-items: flex-end;
     box-sizing: border-box;
     /*position: absolute;*/
     width: 100%;
@@ -123,6 +125,11 @@
     box-sizing: border-box;
     width: 100%;
 }
+.startBatchSyncButton .btn.passive{
+    background: var(--void);
+    color: var(--mediumpurple);
+}
+
 
 .zipCheck{
     position: absolute;
@@ -136,7 +143,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-bottom: 4rem;
+    padding-bottom: 5.6rem;
     z-index: 3;
 }
     .zipCheck .prompt{
@@ -181,28 +188,31 @@
         /*margin-bottom: .15rem;*/
         margin-top: -.25rem;
     }
-    .zipCheck .cityState{
+    .zipCheck .continueButton{
         position: absolute;
         display: flex; align-items: center;
         width: 100%; justify-content: center;
         white-space: nowrap;
-        margin-top: 1rem;
-        bottom: 1.75rem;
-        color: var(--mediumpurple);
+        /*margin-top: 1rem;*/
+        bottom: 1.25rem;
+        /*bottom: 1.75rem;*/
+        /*background: var(--actionpurple);*/
+        /*color: white;*/
     }
-    .zipCheck .cityState .icon{
-        margin-right: .25rem;
+    .zipCheck .continueButton .contbtn{
+        width: 13rem;
     }
     .zipCheck .decline{
         width: 100%;
         text-align: center;
         white-space: nowrap;
         position: absolute;
-        margin-top: 1rem;
-        bottom: 1.75rem;
+        bottom: 2.3rem;
         color: var(--actionpurple);
         font-weight: 500;
     }
+
+
     .confirmZIPButton{
         position: absolute;
         right: 2rem;

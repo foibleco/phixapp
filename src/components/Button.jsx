@@ -8,7 +8,8 @@ const Button = (props) => {
         <div 
             className = {[
                 styles.button, 
-                props.className
+                props.className,
+                styles[props.state]
             ].join(' ')} 
             onClick = {props.onClick}
         >

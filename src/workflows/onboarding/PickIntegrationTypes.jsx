@@ -99,7 +99,9 @@ export default class PickIntegrationTypes extends React.Component{
             )}
         )
 
-        const syncButtonLabel = this.selected.length===1? 'Sync ' + this.selected[0] : 'Sync ' + this.selected.length + ' Accounts'
+        const syncButtonLabel = this.selected.length===0? 'Pick one or more to continue.' :
+            this.selected.length===1? 'Link ' + this.selected[0] : 
+            'Link ' + this.selected.length + ' Accounts'
 
         return(
             <div className = {styles.pickIntegrationTypes}>
@@ -111,35 +113,16 @@ export default class PickIntegrationTypes extends React.Component{
                     animate
                 />
                 <div className = {styles.bottomButtonWrapper}>
-                    <FlipMove 
-                        className = {styles.btnFlipMove}
-                        duration = {250}
-                        enterAnimation = {!this.selected.length===0? {
-                            from: {transform: 'translateY(65px)', opacity: 0},
-                            to: {transform: 'translateY(0px)', opacity: 2}
-                        }: {
-                            from: {transform: 'translateY(65px)', opacity: 0},
-                            to: {transform: 'translateY(0px)', opacity: 2}
-                        }}
-                        leaveAnimation = {!this.selected.length===0? {
-                            from: {transform: 'translateY(0px)', opacity: 1},
-                            to: {transform: 'translateY(-65px)', opacity: -1}
-                        } : {
-                            from: {transform: 'translateY(0px)', opacity: 1},
-                            to: {transform: 'translateY(65px)', opacity: -1}
-                        }}
-
-                    >
-                    {this.selected.length >= 1 &&
+                    {//this.selected.length >= 1 &&
                         <div className = {styles.startBatchSyncButton}>
                             <Button 
-                                className = {styles.btn} 
+                                className = {styles.btn}
+                                state = {this.selected.length===0? 'disabled' : ''} 
                                 label = {syncButtonLabel} 
                                 onClick = {this.batchSync} 
                             />
                         </div>
                     }
-                    </FlipMove>
                 </div>
                 <FlipMove typeName = {null}
                     enterAnimation = {{
@@ -210,11 +193,11 @@ class ZipCheck extends React.Component{
                     onChange = {(e)=>{this.modifyZIP(e.target.value)}}
                     value = {this.zipCode}
                 />
-                <CircleButton 
-                    img = "check"
-                    className = {[styles.confirmZIPButton, locationReady? styles.show : styles.hidden].join(' ')}
-                    onClick = {this.props.onComplete}
-                />
+
+                <div className = {styles.cityStatePopover}>
+
+                </div>
+
                 <FlipMove
                     typeName = {null}
                     enterAnimation = {!locationReady? {
@@ -236,9 +219,13 @@ class ZipCheck extends React.Component{
 
                     {locationReady? 
                         (
-                            <div key = "loc" className = {styles.cityState}>
-                                <Icon img = "locationpin" size = "small" className = {styles.icon}/>
+                            <div key = "loc" className = {styles.continueButton}>
+                                <Button label = "Continue" className = {styles.contbtn}
+                                    onClick = {this.props.onComplete}
+                                />
+                                {/* <Icon img = "locationpin" size = "small" className = {styles.icon}/>
                                 {`${this.computedLocation.city}, ${this.computedLocation.state}`}
+                                */}
                             </div>
                         ) : ( 
                             <div 
