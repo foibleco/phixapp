@@ -15,6 +15,11 @@ export default class Header extends React.Component{
       this.searching = !this.searching
     }
 
+    focusBlur = () => {
+      if(this.searching && this.props.search) this.searchInput.focus()
+      // else this.searchInput.blur()
+    }
+
     componentDidUpdate(prevProps){
       if(prevProps.search !== this.props.search && !this.props.search && this.searching){
         this.toggleSearch()
@@ -48,6 +53,7 @@ export default class Header extends React.Component{
                 from: {opacity: 1, transform: 'translateX(0)'},
                 to: {opacity: 0, transform: 'translateX(-65%)'},
               }}
+              onFinishAll = {this.focusBlur}
             >
               <div 
                 key = {this.searching && this.props.search? 'search' : title} 
@@ -56,8 +62,9 @@ export default class Header extends React.Component{
                   {!this.searching && title}
                   {this.searching && this.props.search && 
                     <React.Fragment>
-                    <Icon img = "search" size = "small" className = {styles.inputSearchIcon}/>
+                    <Icon img = "search" size = "tiny" className = {styles.inputSearchIcon}/>
                     <input 
+                      ref = {(input)=>{this.searchInput = input}}
                       className = {styles.searchInput}
                       placeholder = {this.props.searchPlaceholder}
                       onChange = {this.props.onSearch? this.props.onSearch : (e)=>{console.log('search for ', e.target.value)}}

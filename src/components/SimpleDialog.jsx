@@ -74,6 +74,7 @@ export default class SimpleDialog extends React.Component{
                         <Button
                             key = {this.props.subButtonLabel} 
                             className = {styles.subButton}
+                            state = 'passive'
                             label = {this.props.subButtonLabel}
                             onClick = {this.props.onSubButtonClick}
                         />

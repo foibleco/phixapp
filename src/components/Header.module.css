@@ -96,16 +96,25 @@
     padding-left: 38px;
     appearance: none;
     outline: none;
-    border: none;
+    /*border: none;*/
+    border: 1px solid var(--lightpurple);
     height: 2.25rem;
     width: 100%;
+    /*border: var(--lightpurple);*/
     /*left: 45px;*/
     border-radius: 3px;
     /*position: absolute;*/
     /*pointer-events: none;*/
 }
 .searchInput::placeholder{
-    color: #d7d7d7;
+    color: var(--subactionpurple);
+}
+.searchInput:focus{
+    border: 1px solid var(--actionpurple);
+    outline: none;
+}
+.searchInput:focus::placeholder{
+    color: var(--lightpurple);
 }
 .dotboiga{
     margin-left: 10px;

@@ -14,6 +14,10 @@
         color: var(--subactionpurple);
         background: var(--void);
     }
+    .button.passive{
+        color: var(--actionpurple);
+        background: white;
+    }
 
 .circleButton{
     background: var(--actionpurple);

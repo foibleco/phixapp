@@ -153,6 +153,7 @@ export default class Onboarding extends React.Component{
                     onBack = {backableSteps.includes(store.step)? store.goBack : ''}
                     hide = {!headerSteps.includes(store.step)}
                     search = {store.step==='find'}
+                    searchPlaceholder = {'Search...'} //dynamir according to acct?
                     onSearch = {store.setSearchString}
                     theme = "discreet"
                 />
