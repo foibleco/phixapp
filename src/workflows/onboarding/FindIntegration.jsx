@@ -65,7 +65,7 @@ export default class FindIntegration extends React.Component{
                 //flawed but care providers is the only filterable option for now
                 // if(this.searching) return entry.name.includes(searchstring)
                 if(this.selected) return entry.name === this.selected
-                else if(this.props.searchstring) return entry.name.toLowerCase().includes(this.props.searchstring.toLowerCase()) || entry.network.toLowerCase().includes(this.props.searchstring.toLowerCase())
+                else if(this.props.searchstring) return entry.name.toLowerCase().includes(this.props.searchstring.toLowerCase())
                 else if(this.props.integration==='Care Provider') return entry.type===this.filteringBy
                 else return entry
             })

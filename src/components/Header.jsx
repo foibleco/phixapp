@@ -13,6 +13,7 @@ export default class Header extends React.Component{
     @observable searching = false
     @action toggleSearch = () =>{
       this.searching = !this.searching
+      if(!this.searching && this.props.onSearch) this.props.onSearch({target:{value:''}})
     }
 
     focusBlur = () => {
@@ -67,7 +68,7 @@ export default class Header extends React.Component{
                       ref = {(input)=>{this.searchInput = input}}
                       className = {styles.searchInput}
                       placeholder = {this.props.searchPlaceholder}
-                      onChange = {this.props.onSearch? this.props.onSearch : (e)=>{console.log('search for ', e.target.value)}}
+                      onChange = {this.props.onSearch && this.searching && this.props.search? this.props.onSearch : (e)=>{console.log('search for ', e.target.value)}}
                     />
                     {/*
                     <div className = {styles.cancelSearch}>
