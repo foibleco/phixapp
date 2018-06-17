@@ -52,12 +52,8 @@ const pharmacies = [
 
 const genetics = [
     {name: '23 and Me'},
-    {name: 'Acobiom'},
     {name: 'deCODE'},
-    {name: 'Gene TLC'},
-    {name: 'GenebyGene'},
     {name: 'Genosearch'},
-    {name: 'Health In Code'},
     {name: 'Healthnucleus'},
     {name: 'MapMyGenome'},
 ]
@@ -76,8 +72,6 @@ const wearables = [
     {name: 'Android Wear'},
     {name: 'Fitbit'},
     {name: 'Garmin'},
-    {name: 'Huawei'},
-    {name: 'Moto 360'},
     {name: 'Samsung Gear'},
 
 ]
