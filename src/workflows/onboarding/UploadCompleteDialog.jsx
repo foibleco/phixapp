@@ -42,6 +42,7 @@ export default class UploadCompleteDialog extends React.Component{
         return(
             <SimpleDialog
                 selfCentering = {true}
+                offset = {!complete? 130 : -20}
                 img = {<IntegrationUploadAnimation type = {this.props.type} integrateWith = {this.props.integrateWith} complete = {complete}/>}
                 context = {
                     !complete? (

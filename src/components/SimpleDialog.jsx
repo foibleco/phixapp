@@ -28,7 +28,14 @@ export default class SimpleDialog extends React.Component{
         }
     }
 
-    @action setHeight = (ht) => this.height = ht
+    findNodeAndSetHeight = () => {
+        if(this.props.selfCentering){
+            this.setHeight(findDOMNode(this.container).getBoundingClientRect().height)
+            console.log((window.innerHeight / 2) - (this.height / 2))
+        }
+    }
+
+    @action setHeight = (ht) => this.height = (this.props.offset || 0) + ht
 
     render(){
 

@@ -58,9 +58,18 @@ storiesOf('Onboarding', module)
     })
     .add('IntegrationUploadAnimation', ()=>{
         const complete = boolean('complete', false)
-        return <IntegrationUploadAnimation 
-            complete = {complete}
-            integrateWith = "UCSF Medical Center"
-            type = "Care Provider"
-        />
+        return (
+            <div style = {{
+                width: '100vw',
+                height: '100vh',
+                background: '#f3f3f5',
+                paddingTop: '200px'
+            }}>
+            <IntegrationUploadAnimation 
+                complete = {complete}
+                integrateWith = "Kaiser Permanente"
+                type = "Care Provider"
+            />
+            </div>
+        )
     })
