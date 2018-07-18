@@ -192,7 +192,7 @@ export default class FindIntegration extends React.Component{
                             </div>
                             <div className = {styles.loginInputWrapper}>
                                 <Icon img = "lock" size = "small" className = {styles.passwordIcon} />
-                                <input placeholder = "Password" className = {[styles.input,styles.password].join(' ')} />
+                                <input type = "password" placeholder = "Password" className = {[styles.input,styles.password].join(' ')} />
                             </div>
                             <Button
                                 className = {styles.signInButton}

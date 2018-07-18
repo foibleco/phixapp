@@ -1,11 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans:400,500,600');
 
 html{
+    position: absolute;
+    padding-right: 20px;
     touch-action: manipulation;
     overflow-x: hidden;
     position: relative;
     /*overflow: scroll;*/
     user-select: none;
+    /*overflow: hidden;*/
         /*this should disable accidental text selection in mobile browsers etc.*/
 }
 ::-webkit-scrollbar{
@@ -15,6 +18,8 @@ html{
 
 body{
     margin: 0;
+
+    /*height: 900vh;*/
 }
 
 *{
